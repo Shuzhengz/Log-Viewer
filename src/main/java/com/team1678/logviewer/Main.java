@@ -2,8 +2,6 @@ package com.team1678.logviewer;
 
 import com.team1678.logviewer.frontend.Application;
 
-import java.io.FileNotFoundException;
-
 public class Main {
 
     /**
@@ -11,7 +9,7 @@ public class Main {
      * @param args unused command-line arguments
      */
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Application.app.mainloop();
     }
 }

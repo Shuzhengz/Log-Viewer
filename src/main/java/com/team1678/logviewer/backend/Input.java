@@ -1,13 +1,10 @@
 package com.team1678.logviewer.backend;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import java.io.FileNotFoundException;
 
 public class Input {
 
@@ -15,7 +12,13 @@ public class Input {
         throw new IllegalStateException("Utility class");
     }
 
-    public static List<List<String>> read(String path) throws FileNotFoundException {
+    public static Map<String, List<Integer>> output(String path){
+        Map<String, List<Integer>> hm = new HashMap<String, List<Integer>>();
+        read(path);
+        return hm;
+    }
+
+    public static List<List<String>> read(String path){
         List<List<String>> records = new ArrayList<>();
         try (CSVReader csvReader = new CSVReader(new FileReader(path));) {
             String[] values;

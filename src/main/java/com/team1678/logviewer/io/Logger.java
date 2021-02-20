@@ -34,6 +34,7 @@ public class Logger {
             // Print to output if something is not normal
             System.out.print(error);
         }
+
         // Write to file
         FileWriter write = null;
         if (logCreated) {
@@ -51,6 +52,7 @@ public class Logger {
             }
         }
 
+        // Show fatal error
         if (severity == Severity.FATAL) {
             showDialog("FATAL " + message);
         }

@@ -1,6 +1,8 @@
 package com.team1678.logviewer.frontend;
 
 import com.team1678.logviewer.backend.Input;
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -18,8 +20,10 @@ public final class Application {
     static {
         try {
             app = new Application();
+            Logger.log("App Initializing", Severity.NORMAL);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Logger.log("Error Initializing", Severity.FATAL);
         }
     }
 

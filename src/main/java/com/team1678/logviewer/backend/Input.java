@@ -27,7 +27,7 @@ public class Input {
             return records;
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
-            Logger.log("Error reading CSV", Severity.FATAL);
+            Logger.log("Error reading CSV", Severity.ERROR);
         }
         return records;
     }

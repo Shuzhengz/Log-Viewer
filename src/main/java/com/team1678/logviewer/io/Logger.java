@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-import com.team1678.logviewer.io.Severity;
+import javax.swing.*;
 
 public class Logger {
     public static final boolean logsActivated = false;
@@ -56,6 +56,6 @@ public class Logger {
     }
 
     private static void showDialog(String message) {
-        // Show Dialog
+        JOptionPane.showMessageDialog(null, message, null, JOptionPane.ERROR_MESSAGE);
     }
 }

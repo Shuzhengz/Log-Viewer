@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import com.team1678.logviewer.io.Severity;
+
 public class Logger {
     public static final boolean logsActivated = false;
 

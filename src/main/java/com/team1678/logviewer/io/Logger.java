@@ -8,20 +8,23 @@ import java.time.LocalDateTime;
 import javax.swing.*;
 
 public class Logger {
-    public static final boolean logsActivated = true;
+    public static final boolean LOG_ACTIVATED = true;
 
     private Logger() {
         throw new IllegalStateException("Utility class");
     }
 
     public static synchronized void log(String message, Severity severity) {
-
-        if (!logsActivated) return;
+        if (!LOG_ACTIVATED) return;
+        boolean logCreated;
 
         // Creates file if not created
         final File logs = new File("logs.txt");
         try {
-            logs.createNewFile();
+            logCreated = logs.createNewFile();
+            if (logCreated){
+                showDialog("Log created");
+            }
         } catch(IOException | SecurityException e) {
             showDialog("Error writing errors to log. Fatal. Possible cause: insufficient permissions.");
             System.exit(-1);

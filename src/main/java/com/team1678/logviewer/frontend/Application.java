@@ -27,6 +27,6 @@ public final class Application {
      * Run the application forever (or until an exit request is sent)
      */
     public void mainloop() {
-        System.out.println(rawData);
+        // Mainloop
     }
 }

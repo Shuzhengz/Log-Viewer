@@ -8,7 +8,7 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class Input {
 
-    private Input() {
+    Input() {
         throw new IllegalStateException("Utility class");
     }
 

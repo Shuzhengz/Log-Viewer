@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +23,8 @@ class InputTest {
 
     @Test
     void readTest() throws FileNotFoundException {
-        assertNotNull(Input.read(path));
+        List<List<String>> out = Input.read(path);
+        assertNotNull(out);
+        System.out.println(out);
     }
 }

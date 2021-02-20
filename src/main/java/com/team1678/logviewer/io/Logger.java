@@ -9,6 +9,7 @@ import javax.swing.*;
 
 public class Logger {
     public static final boolean LOG_ACTIVATED = true;
+    private static boolean logCreated;
 
     private Logger() {
         throw new IllegalStateException("Utility class");
@@ -16,15 +17,11 @@ public class Logger {
 
     public static synchronized void log(String message, Severity severity) {
         if (!LOG_ACTIVATED) return;
-        boolean logCreated;
 
         // Creates file if not created
         final File logs = new File("logs.txt");
         try {
             logCreated = logs.createNewFile();
-            if (logCreated){
-                showDialog("Log created");
-            }
         } catch(IOException | SecurityException e) {
             showDialog("Error writing errors to log. Fatal. Possible cause: insufficient permissions.");
             System.exit(-1);
@@ -39,17 +36,19 @@ public class Logger {
         }
         // Write to file
         FileWriter write = null;
-        try {
-            write = new FileWriter(logs, true);
-        } catch(IOException | SecurityException e) {
-            showDialog("Error writing errors to log. Fatal. Possible cause: insufficient permissions.");
-            System.exit(-1);
-        }
-        try {
-            write.write(error);
-            write.close();
-        } catch(IOException e) {
-            showDialog("Error writing errors. Nonfatal.");
+        if (logCreated) {
+            try {
+                write = new FileWriter(logs, true);
+            } catch (IOException | SecurityException e) {
+                showDialog("Error writing errors to log. Fatal. Possible cause: insufficient permissions.");
+                System.exit(-1);
+            }
+            try {
+                write.write(error);
+                write.close();
+            } catch (IOException e) {
+                showDialog("Error writing errors. Nonfatal.");
+            }
         }
 
         if (severity == Severity.FATAL) {

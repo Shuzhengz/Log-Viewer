@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import javax.swing.*;
 
 public class Logger {
-    public static final boolean logsActivated = false;
+    public static final boolean logsActivated = true;
 
     private Logger() {
         throw new IllegalStateException("Utility class");

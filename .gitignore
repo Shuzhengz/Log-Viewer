@@ -157,3 +157,9 @@ imgui.ini
 
 # # IntelliJ Specific Java Settings
 .idea/
+
+
+### App Specific###
+
+## Logs
+logs.txt

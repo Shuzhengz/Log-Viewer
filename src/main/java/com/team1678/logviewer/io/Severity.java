@@ -1,2 +1,9 @@
-package com.team1678.logviewer.io;public class Severity {
+package com.team1678.logviewer.io;
+
+public enum Severity {
+    NORMAL,
+    DEBUG,
+    WARNING,
+    ERROR,
+    FATAL
 }

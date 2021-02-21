@@ -8,10 +8,10 @@ public class Transfer {
     private Transfer(){
         throw new IllegalStateException("Utility Class");
     }
-    public List<List<String>>TransferToFrontend(){
+    public HashMap<String, String[][]>TransferToFrontend(){
         //Work In Progress Methods
         Processor processorVal = new Processor();
-        List<List<String>> returnVal = processorVal.mOrganizedData;//new double[10];
+        HashMap<String, String[][]> returnVal = processorVal.getProcessedData();//new double[10];
         return returnVal;
     }
 

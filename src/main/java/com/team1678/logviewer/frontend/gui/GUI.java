@@ -1,10 +1,18 @@
 package com.team1678.logviewer.frontend.gui;
 
+import javax.swing.JFrame;
 import javax.swing.*;
+import javax.swing.SwingUtilities;
+
 import java.awt.*;
 import java.awt.event.*;
 
-public class GUI implements ActionListener{
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartFactory;
+
+public class GUI implements ActionListener {
 
     public GUI() {
 
@@ -35,25 +43,59 @@ public class GUI implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-     // New window opens
+        String action = e.getActionCommand();
+        if (action.equals("Open Graphs")) {
 
-        JWindow window = new JWindow();
-        window.setSize(700, 800);
-        window.setVisible(true);
+            // New window opens
 
-    // New panel
+            JWindow window = new JWindow();
+            window.setSize(700, 800);
+            window.setVisible(true);
 
-        JPanel panel = new JPanel();
+            // New panel
 
-    // Write a caption
+            JPanel panel = new JPanel();
 
-        JLabel caption = new JLabel("Graphs");
+            // Write a caption
 
-    // Adding object to panel
+            JLabel caption = new JLabel("Graphs");
 
-        panel.add(caption);
+            // Adding object to panel
 
+            panel.add(caption);
 
+        }
+
+        // Creating the line chart
+
+        class Graph {
+        DefaultCategoryDataset dataset = createDataset();
+
+        JFreeChart chart = ChartFactory.createLineChart(
+                "title", "category", "value", dataset
+            );
+
+        ChartPanel panel = new ChartPanel(chart);
+
+        }
+    }
+
+    // Creating the dataset
+
+    private DefaultCategoryDataset createDataset() {
+
+        String data = "Data";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        // Add values and return
+
+        dataset.addValue(1, data, "1");
+
+        return dataset;
+    }
+
+    public static void main(String[] args) {
 
     }
 }
+

@@ -8,9 +8,11 @@ public class Transfer {
     private Transfer(){
         throw new IllegalStateException("Utility Class");
     }
-    public double[] TransferToFrontend(double[] requestedData){
-        //Work In Progress Methos
-        double[] returnVal = new double[10];
+    public List<List<String>>TransferToFrontend(){
+        //Work In Progress Methods
+        Processor processorVal = new Processor();
+        List<List<String>> returnVal = processorVal.mOrganizedData;//new double[10];
         return returnVal;
     }
+
 }

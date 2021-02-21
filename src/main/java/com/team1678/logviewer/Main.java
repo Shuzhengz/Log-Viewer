@@ -13,6 +13,4 @@ public class Main {
 
         Application.app.mainloop();
     }
-
-
 }

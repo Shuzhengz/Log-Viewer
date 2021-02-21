@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartFactory;
@@ -60,42 +62,81 @@ public class GUI implements ActionListener {
 
             JLabel caption = new JLabel("Graphs");
 
-            // Adding object to panel
+            // Creating buttons
+
+            JButton button1 = new JButton("Line 1");
+            button1.addActionListener(this);
+
+            JButton button2 = new JButton("Line 2");
+            button2.addActionListener(this);
+
+            JButton button3 = new JButton("Line 3");
+            button3.addActionListener(this);
+
+            JButton button4 = new JButton("Line 4");
+            button4.addActionListener(this);
+
+            JButton button5 = new JButton("Line 5");
+            button5.addActionListener(this);
+
+            // Adding objects to panel
 
             panel.add(caption);
 
+            panel.add(button1);
+            panel.add(button2);
+            panel.add(button3);
+            panel.add(button4);
+            panel.add(button5);
+
+
+            }
+
         }
 
+}
         // Creating the line chart
 
-        class Graph {
-        DefaultCategoryDataset dataset = createDataset();
+        class Graph extends ApplicationFrame {
+            public Graph(String title) {
+                super(title);
 
-        JFreeChart chart = ChartFactory.createLineChart(
-                "title", "category", "value", dataset
-            );
+            DefaultCategoryDataset dataset = createDataset();
 
-        ChartPanel panel = new ChartPanel(chart);
+            JFreeChart chart = ChartFactory.createLineChart(
+                    "title", "category", "value", createDataset(),
+                    PlotOrientation.VERTICAL, true, true, false);
 
-        }
-    }
 
-    // Creating the dataset
+            ChartPanel panel = new ChartPanel(chart);
+            setContentPane(panel);
+
+            }
+
+            // Creating the dataset
 
     private DefaultCategoryDataset createDataset() {
 
-        String data = "Data";
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         // Add values and return
 
-        dataset.addValue(1, data, "1");
+        String data = "Data";
 
-        return dataset;
+        dataset.addValue(null, data, null);
+
+        return null;
     }
 
     public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+                }
+        // Did quite some research here, I'm still not sure how it works.
 
+            private void createAndShowGUI() {
+            }
+        });
     }
 }
-

@@ -13,9 +13,7 @@ import org.jfree.chart.*;
 import org.jfree.data.xy.*;
 
 
-import com.team1678.logviewer.backend.Input;
-import com.team1678.logviewer.backend.Processor;
-import com.team1678.logviewer.backend.Transfer;
+import com.team1678.logviewer.backend.*;
 
 
 public class Renderer {

@@ -28,6 +28,9 @@ public class Renderer {
         initUI();
     }
 
+    // frame
+    static JFrame f;
+
     private void initUI() {
 
         XYDataset dataset = createDataset();
@@ -39,7 +42,7 @@ public class Renderer {
         f.add(chartPanel);
 
         f.pack();
-        f.setTitle("Line chart");
+        f.setTitle("Timestamp Line Chart");
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -86,7 +89,7 @@ public class Renderer {
         chart.getLegend().setFrame(BlockBorder.NONE);
 
         chart.setTitle(new TextTitle("Timestamps for Challenges",
-                new Font("Serif", Font.BOLD, 18)
+                new Font("Serif", java.awt.Font.BOLD, 18)
             )
         );
 
@@ -95,9 +98,6 @@ public class Renderer {
 
 
 
-
-    // frame
-    static JFrame f;
 
     // Should the Button be Pressed
     public void actionPerformed(ActionEvent e) {
@@ -131,6 +131,15 @@ public class Renderer {
             w.setLocation(100, 100);
 
         }
+    }
+
+    public static void main(String[] args) {
+
+        EventQueue.invokeLater(() -> {
+
+            var ex = new Renderer();
+            //(true);
+        });
     }
 
 }

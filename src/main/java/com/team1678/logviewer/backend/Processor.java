@@ -1,22 +1,19 @@
 
 package com.team1678.logviewer.backend;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
-
-import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Processor {
     private static List<List<String>> mOrganizedData;
-    private static List<String> headers;
+    private static List<String> mHeaders = new ArrayList<>();
+    private static HashMap<String, String[][]> mProcessedData;
 
-    public static void recieve(List<List<String>> rawData){
+    public void recieve(List<List<String>> rawData){
         List<List<String>> organizedData = new ArrayList<>();
 
-        headers.addAll(rawData.get(0));
+        mHeaders.addAll(rawData.get(0));
 
         for (int i = 0; i < rawData.size(); i++) {
             for (int j = 0; j < rawData.get(i).size(); j++) {
@@ -26,15 +23,31 @@ public class Processor {
         }
         mOrganizedData = organizedData;
     }
-    public static HashMap<String, String[][]> process() {
-
-        for (int i = 0; i < headers.size(); i++) {
-            String[][] data;
-
+    public static HashMap<String, String[][]> processData() {
+        HashMap<String, String[][]> map = new HashMap<String, String[][]>();
+        for (int i = 1; i < mHeaders.size(); i++) {
+            String[][] data = new String[mOrganizedData.get(i).size()][2];
+            for(int j = 0; j < mOrganizedData.get(i).size()-1; j++){
+                data[j][0] = mOrganizedData.get(0).get(j+1);
+                data[j][1] = mOrganizedData.get(i).get(j+1);
+            }
+            map.put(mHeaders.get(i).trim(), data);
         }
-
+        return map;
     }
 
+
+    public List<String> getHeaders(){
+        return mHeaders;
+    }
+
+    public List<List<String>> getOrganizedData(){
+        return mOrganizedData;
+    }
+
+    public HashMap<String, String[][]> getProcessedData(){
+        return mProcessedData;
+    }
 
     public static double getData(double timestamp, double[][] timevsdata){
         double selectedValue = 0;

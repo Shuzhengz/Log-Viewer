@@ -14,43 +14,41 @@ import java.awt.event.ActionListener;
 public class Renderertest {
 
     static JFrame f;
-        // main class
-        public static void main(String[] args) {
-            // craft the new frame
-            JFrame f = new JFrame("frame");
 
-            // Object
-            Renderer s = new Renderer();
+    @BeforeEach
+    void setUp() {
 
-            // Panel
-            JPanel p = new JPanel();
+    }
 
-            JButton b = new JButton("Click");
+    @AfterEach
+    void tearDown() {
 
-            // Adding the actionlistener to the Button
-            b.addActionListener((ActionListener) s);
+    }
 
-            // Adding the button to the panel
-            p.add(b);
+    @Test
+    void renderTest() {
+        // craft the new frame
+        JFrame f = new JFrame("frame");
 
-            f.add(p);
+        // Object
+        Renderer s = new Renderer();
 
-            // Size of the Frame
-            f.setSize(500, 500);
+        // Panel
+        JPanel p = new JPanel();
 
-            f.show();
-        }
+        JButton b = new JButton("Click");
 
-        @BeforeEach
-        void setUp() {
-        }
+        // Adding the actionlistener to the Button
+        b.addActionListener((ActionListener) s);
 
-        @AfterEach
-        void tearDown() {
-        }
+        // Adding the button to the panel
+        p.add(b);
 
-        @Test
-        void renderTest() {
+        f.add(p);
 
-        }
+        // Size of the Frame
+        f.setSize(500, 500);
+
+        f.show();
+    }
 }

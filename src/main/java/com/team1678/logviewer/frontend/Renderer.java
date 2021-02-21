@@ -10,11 +10,17 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import org.jfree.chart.*;
+import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.*;
-import org.junit.*;
+
 
 
 import com.team1678.logviewer.backend.*;
+import com.team1678.logviewer.frontend.*;
 
 
 public class Renderer {
@@ -30,12 +36,12 @@ public class Renderer {
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         chartPanel.setBackground(Color.white);
-        add(chartPanel);
+        f.add(chartPanel);
 
-        pack();
-        setTitle("Line chart");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.pack();
+        f.setTitle("Line chart");
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private XYDataset createDataset() {
@@ -80,7 +86,7 @@ public class Renderer {
         chart.getLegend().setFrame(BlockBorder.NONE);
 
         chart.setTitle(new TextTitle("Timestamps for Challenges",
-                new Font("Serif", java.awt.Font.BOLD, 18)
+                new Font("Serif", Font.BOLD, 18)
             )
         );
 
@@ -126,41 +132,5 @@ public class Renderer {
 
         }
     }
-
-
-
-    // main class
-/*
-public static void main(String[] args) {
-
-    // craft the new frame
-    f = new JFrame("frame");
-
-    // Object
-    Renderer s = new Renderer();
-
-    // Panel
-    JPanel p = new JPanel();
-
-    JButton b = new JButton("Click");
-
-    // Adding the actionlistener to the Button
-    b.addActionListener((ActionListener) s);
-
-    // Adding the button to the panel
-    p.add(b);
-
-    f.add(p);
-
-    // Size of the Frame
-    f.setSize(500, 500);
-
-    f.show();
-}
-*/
-
-
-
-
 
 }

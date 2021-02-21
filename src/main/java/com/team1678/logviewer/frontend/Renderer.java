@@ -11,6 +11,7 @@ import java.awt.Font;
 
 import org.jfree.chart.*;
 import org.jfree.data.xy.*;
+import org.junit.*;
 
 
 import com.team1678.logviewer.backend.*;
@@ -92,33 +93,6 @@ public class Renderer {
     // frame
     static JFrame f;
 
-    // main class
-public static void main(String[] args) {
-    // craft the new frame
-    f = new JFrame("frame");
-
-    // Object
-    Renderer s = new Renderer();
-
-    // Panel
-    JPanel p = new JPanel();
-
-    JButton b = new JButton("Click");
-
-    // Adding the actionlistener to the Button
-    b.addActionListener((ActionListener) s);
-
-    // Adding the button to the panel
-    p.add(b);
-
-    f.add(p);
-
-    // Size of the Frame 
-    f.setSize(500, 500);
-
-    f.show();
-}
-
     // Should the Button be Pressed
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
@@ -152,6 +126,39 @@ public static void main(String[] args) {
 
         }
     }
+
+
+
+    // main class
+/*
+public static void main(String[] args) {
+
+    // craft the new frame
+    f = new JFrame("frame");
+
+    // Object
+    Renderer s = new Renderer();
+
+    // Panel
+    JPanel p = new JPanel();
+
+    JButton b = new JButton("Click");
+
+    // Adding the actionlistener to the Button
+    b.addActionListener((ActionListener) s);
+
+    // Adding the button to the panel
+    p.add(b);
+
+    f.add(p);
+
+    // Size of the Frame
+    f.setSize(500, 500);
+
+    f.show();
+}
+*/
+
 
 
 

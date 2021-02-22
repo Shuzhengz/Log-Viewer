@@ -11,6 +11,7 @@ public class Transfer {
     public HashMap<String, String[][]>TransferToFrontend(){
         //Work In Progress Methods
         Processor processorVal = new Processor();
+        //processorVal.recieve
         HashMap<String, String[][]> returnVal = processorVal.getProcessedData();//new double[10];
         return returnVal;
     }

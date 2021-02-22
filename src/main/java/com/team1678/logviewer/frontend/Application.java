@@ -1,6 +1,7 @@
 package com.team1678.logviewer.frontend;
 
 import com.team1678.logviewer.backend.Input;
+import com.team1678.logviewer.backend.Processor;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -16,6 +17,7 @@ public final class Application {
     }
 
     public static Application app = null;
+    private static Processor processor = new Processor();
 
     static {
         try {

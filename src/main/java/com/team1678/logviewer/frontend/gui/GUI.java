@@ -51,15 +51,12 @@ public class GUI implements ActionListener {
             window.setVisible(true);
 
             // New panel
-
             JPanel panel = new JPanel();
 
             // Write a caption
-
             JLabel caption = new JLabel("Graphs");
 
             // Creating buttons
-
             JButton button1 = new JButton("Line 1");
             button1.addActionListener(this);
 
@@ -80,7 +77,6 @@ public class GUI implements ActionListener {
             JCheckBox checkBox3 = new JCheckBox("3");
 
             // Adding objects to panel
-
             panel.add(caption);
 
             panel.add(button1);
@@ -92,10 +88,6 @@ public class GUI implements ActionListener {
             panel.add(checkBox1);
             panel.add(checkBox2);
             panel.add(checkBox3);
-
-
         }
-
     }
-
 }

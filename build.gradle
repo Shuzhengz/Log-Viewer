@@ -2,6 +2,9 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
 group 'com.frc1678.logviewer'
 version '1.0-SNAPSHOT'
 
@@ -10,9 +13,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'junit:junit:4.12'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+<<<<<<< HEAD
     implementation group: 'org.jfree', name: 'jfreechart', version: '1.5.2'
+=======
+    implementation 'com.opencsv:opencsv:5.3'
+>>>>>>> 2da59fab2f5982d1626856e9928400fa39da7277
 }
 
 test {

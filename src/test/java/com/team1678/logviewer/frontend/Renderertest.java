@@ -49,6 +49,6 @@ public class Renderertest {
         // Size of the Frame
         f.setSize(500, 500);
 
-        f.show();
+        f.setVisible(true);
     }
 }

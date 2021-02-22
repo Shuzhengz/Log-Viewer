@@ -30,6 +30,9 @@ public class GUI implements ActionListener {
             // Create panel
 
             JPanel panel = new JPanel();
+            panel.setVisible(true);
+            panel.setBounds(400, 400, 400, 400);
+
 
             // Create button
 
@@ -80,6 +83,10 @@ public class GUI implements ActionListener {
                 JButton button5 = new JButton("Line 5");
                 button5.addActionListener(this);
 
+                JCheckBox checkBox1 = new JCheckBox("1");
+                JCheckBox checkBox2 = new JCheckBox("2");
+                JCheckBox checkBox3 = new JCheckBox("3");
+
                 // Adding objects to panel
 
                 panel.add(caption);
@@ -89,6 +96,10 @@ public class GUI implements ActionListener {
                 panel.add(button3);
                 panel.add(button4);
                 panel.add(button5);
+
+                panel.add(checkBox1);
+                panel.add(checkBox2);
+                panel.add(checkBox3);
 
 
             }

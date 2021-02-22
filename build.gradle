@@ -18,6 +18,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     implementation 'com.opencsv:opencsv:5.3'
+    implementation group: 'org.jfree', name: 'jfreechart', version: '1.5.2'
 }
 
 test {

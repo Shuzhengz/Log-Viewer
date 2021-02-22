@@ -8,7 +8,8 @@ import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 // Creating the line chart
-class Graph extends ApplicationFrame {
+public class Graph extends ApplicationFrame {
+
     public Graph(String title) {
         super(title);
 
@@ -22,7 +23,7 @@ class Graph extends ApplicationFrame {
     }
 
     // Creating the dataset
-    private DefaultCategoryDataset createDataset() {
+    public static DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         // Add values and return
         String data = "Data";

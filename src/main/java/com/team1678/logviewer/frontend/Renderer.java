@@ -1,13 +1,11 @@
 package com.team1678.logviewer.frontend;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.image.*;
 
 import org.jfree.chart.*;
 import org.jfree.chart.block.BlockBorder;
@@ -17,15 +15,29 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.*;
 
+import com.team1678.logviewer.frontend.gui.Graph;
 
-public class Renderer {
+
+public class Renderer extends JFrame{
+
+    public void Renderer(){
+        this.setLayout(new FlowLayout());
+        this.add(new JButton("button"));
+        this.add(new JCheckBox("check"));
+        this.add(new JLabel("label"));
+
+        this.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
+        this.setSize(new Dimension(250, 80));
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
     // frame
     static JFrame stamp;
 
-    private void initUI() {
+    public void initUI() {
 
-        XYDataset dataset = createDataset();
+        XYDataset dataset = (XYDataset) Graph.createDataset();
         JFreeChart chart = createChart(dataset);
 
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -37,17 +49,6 @@ public class Renderer {
         stamp.setTitle("Timestamp Line Chart");
         stamp.setLocationRelativeTo(null);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    private XYDataset createDataset() {
-
-        var series = new XYSeries("Bob");
-        series.add(0, 0);
-
-        var dataset = new XYSeriesCollection();
-        dataset.addSeries(series);
-
-        return dataset;
     }
 
     private JFreeChart createChart(XYDataset dataset) {

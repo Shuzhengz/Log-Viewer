@@ -18,18 +18,10 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.*;
 
 
-
-import com.team1678.logviewer.backend.*;
-import com.team1678.logviewer.frontend.*;
-
-
 public class Renderer {
-    public Renderer() {
-        initUI();
-    }
 
     // frame
-    static JFrame f;
+    static JFrame stamp;
 
     private void initUI() {
 
@@ -39,12 +31,12 @@ public class Renderer {
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         chartPanel.setBackground(Color.white);
-        f.add(chartPanel);
+        stamp.add(chartPanel);
 
-        f.pack();
-        f.setTitle("Timestamp Line Chart");
-        f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        stamp.pack();
+        stamp.setTitle("Timestamp Line Chart");
+        stamp.setLocationRelativeTo(null);
+        stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private XYDataset createDataset() {
@@ -71,20 +63,20 @@ public class Renderer {
                 false
         );
 
-        XYPlot plot = chart.getXYPlot();
+        XYPlot graphPoints = chart.getXYPlot();
 
         var renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesPaint(0, Color.GREEN);
         renderer.setSeriesStroke(0, new BasicStroke(2.0f));
 
-        plot.setRenderer(renderer);
-        plot.setBackgroundPaint(Color.WHITE);
+        graphPoints.setRenderer(renderer);
+        graphPoints.setBackgroundPaint(Color.WHITE);
 
-        plot.setRangeGridlinesVisible(true);
-        plot.setRangeGridlinePaint(Color.BLACK);
+        graphPoints.setRangeGridlinesVisible(true);
+        graphPoints.setRangeGridlinePaint(Color.BLACK);
 
-        plot.setDomainGridlinesVisible(true);
-        plot.setDomainGridlinePaint(Color.BLACK);
+        graphPoints.setDomainGridlinesVisible(true);
+        graphPoints.setDomainGridlinePaint(Color.BLACK);
 
         chart.getLegend().setFrame(BlockBorder.NONE);
 
@@ -96,39 +88,36 @@ public class Renderer {
         return chart;
     }
 
-
-
-
     // Should the Button be Pressed
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
         if (s.equals("click")) {
             // Create a window
-            JWindow w = new JWindow(f);
+            JWindow citrusWindow = new JWindow(stamp);
 
             // Set panel
-            JPanel p = new JPanel();
+            JPanel citrusPanel = new JPanel();
 
             // Make the label
-            JLabel l = new JLabel("Welcome to the Window.");
+            JLabel citrusLabel = new JLabel("Welcome to the Window.");
 
             // Ready the border
-            p.setBorder(BorderFactory.createLineBorder(Color.black));
+            citrusPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
-            p.add(l);
-            p.add(p);
+            citrusPanel.add(citrusLabel);
+            citrusPanel.add(citrusPanel);
 
             // set background
-            p.setBackground(Color.green);
+            citrusPanel.setBackground(Color.green);
 
             // setup a window size
-            w.setSize(200, 300);
+            citrusWindow.setSize(200, 300);
 
             // set the visibility of the window
-            w.setVisible(true);
+            citrusWindow.setVisible(true);
 
             // window location setup
-            w.setLocation(100, 100);
+            citrusWindow.setLocation(100, 100);
 
         }
     }
@@ -137,7 +126,7 @@ public class Renderer {
 
         EventQueue.invokeLater(() -> {
 
-            var ex = new Renderer();
+            var display = new Renderer();
             //(true);
         });
     }

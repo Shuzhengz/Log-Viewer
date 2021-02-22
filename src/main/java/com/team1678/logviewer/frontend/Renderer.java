@@ -118,17 +118,6 @@ public class Renderer {
 
             // window location setup
             citrusWindow.setLocation(100, 100);
-
         }
     }
-
-    public static void main(String[] args) {
-
-        EventQueue.invokeLater(() -> {
-
-            var display = new Renderer();
-            //(true);
-        });
-    }
-
 }

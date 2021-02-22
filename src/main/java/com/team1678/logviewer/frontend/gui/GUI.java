@@ -7,6 +7,8 @@ import javax.swing.SwingUtilities;
 import java.awt.*;
 import java.awt.event.*;
 
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.ui.ApplicationFrame;
@@ -20,29 +22,29 @@ public class GUI implements ActionListener {
         public GUI() {
 
             // Create frame
-
             JFrame frame = new JFrame("Logger");
             frame.setSize(400, 400);
             frame.setVisible(true);
             frame.setLayout(new GridLayout(5, 5));
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            Logger.log("Frame Created", Severity.DEBUG);
 
             // Create panel
-
             JPanel panel = new JPanel();
             panel.setVisible(true);
             panel.setBounds(400, 400, 400, 400);
+            Logger.log("Panel Created", Severity.DEBUG);
 
 
             // Create button
-
             JButton button = new JButton("Open Graphs");
+            Logger.log("Button Created", Severity.DEBUG);
             button.addActionListener(this);
 
             // Adding objects to panel
-
             panel.add(button);
             panel.add(frame);
+            Logger.log("Objects Added", Severity.DEBUG);
 
         }
 
@@ -53,7 +55,6 @@ public class GUI implements ActionListener {
             if (action.equals("Open Graphs")) {
 
                 // New window opens
-
                 JWindow window = new JWindow();
                 window.setSize(700, 800);
                 window.setVisible(true);
@@ -106,49 +107,4 @@ public class GUI implements ActionListener {
 
         }
 
-    }
-    // Creating the line chart
-
-    class Graph extends ApplicationFrame {
-        public Graph(String title) {
-            super(title);
-
-            DefaultCategoryDataset dataset = createDataset();
-
-            JFreeChart chart = ChartFactory.createLineChart(
-                    "title", "category", "value", createDataset(),
-                    PlotOrientation.VERTICAL, true, true, false);
-
-
-            ChartPanel panel = new ChartPanel(chart);
-            setContentPane(panel);
-
-        }
-
-        // Creating the dataset
-
-        private DefaultCategoryDataset createDataset() {
-
-            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-            // Add values and return
-
-            String data = "Data";
-
-            dataset.addValue(null, data, null);
-
-            return null;
-        }
-
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    createAndShowGUI();
-                }
-                // Did quite some research here, I'm still not sure how it works.
-
-                private void createAndShowGUI() {
-                }
-            });
-        }
     }

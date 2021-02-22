@@ -4,7 +4,6 @@ plugins {
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
-
 group 'com.frc1678.logviewer'
 version '1.0-SNAPSHOT'
 

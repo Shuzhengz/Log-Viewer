@@ -1,154 +1,93 @@
 package com.team1678.logviewer.frontend.gui;
 
-import javax.swing.JFrame;
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
+
 import javax.swing.*;
-import javax.swing.SwingUtilities;
-
 import java.awt.*;
-import java.awt.event.*;
-
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.ui.ApplicationFrame;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.ChartFactory;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
 
-        public GUI() {
+    public GUI() {
 
-            // Create frame
+        // Create frame
+        JFrame frame = new JFrame("Logger");
+        frame.setSize(400, 400);
+        frame.setVisible(true);
+        frame.setLayout(new GridLayout(5, 5));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Logger.log("Frame Created", Severity.DEBUG);
 
-            JFrame frame = new JFrame("Logger");
-            frame.setSize(400, 400);
-            frame.setVisible(true);
-            frame.setLayout(new GridLayout(5, 5));
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Create panel
+        JPanel panel = new JPanel();
+        panel.setVisible(true);
+        panel.setBounds(400, 400, 400, 400);
+        Logger.log("Panel Created", Severity.DEBUG);
 
-            // Create panel
 
+        // Create button
+        JButton button = new JButton("Open Graphs");
+        Logger.log("Button Created", Severity.DEBUG);
+        button.addActionListener(this);
+
+        // Adding objects to panel
+        panel.add(button);
+        panel.add(frame);
+        Logger.log("Objects Added", Severity.DEBUG);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String action = e.getActionCommand();
+        if (action.equals("Open Graphs")) {
+
+            // New window opens
+            JWindow window = new JWindow();
+            window.setSize(700, 800);
+            window.setVisible(true);
+
+            // New panel
             JPanel panel = new JPanel();
-            panel.setVisible(true);
-            panel.setBounds(400, 400, 400, 400);
 
+            // Write a caption
+            JLabel caption = new JLabel("Graphs");
 
-            // Create button
+            // Creating buttons
+            JButton button1 = new JButton("Line 1");
+            button1.addActionListener(this);
 
-            JButton button = new JButton("Open Graphs");
-            button.addActionListener(this);
+            JButton button2 = new JButton("Line 2");
+            button2.addActionListener(this);
+
+            JButton button3 = new JButton("Line 3");
+            button3.addActionListener(this);
+
+            JButton button4 = new JButton("Line 4");
+            button4.addActionListener(this);
+
+            JButton button5 = new JButton("Line 5");
+            button5.addActionListener(this);
+
+            JCheckBox checkBox1 = new JCheckBox("1");
+            JCheckBox checkBox2 = new JCheckBox("2");
+            JCheckBox checkBox3 = new JCheckBox("3");
 
             // Adding objects to panel
+            panel.add(caption);
 
-            panel.add(button);
-            panel.add(frame);
+            panel.add(button1);
+            panel.add(button2);
+            panel.add(button3);
+            panel.add(button4);
+            panel.add(button5);
 
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            String action = e.getActionCommand();
-            if (action.equals("Open Graphs")) {
-
-                // New window opens
-
-                JWindow window = new JWindow();
-                window.setSize(700, 800);
-                window.setVisible(true);
-
-                // New panel
-
-                JPanel panel = new JPanel();
-
-                // Write a caption
-
-                JLabel caption = new JLabel("Graphs");
-
-                // Creating buttons
-
-                JButton button1 = new JButton("Line 1");
-                button1.addActionListener(this);
-
-                JButton button2 = new JButton("Line 2");
-                button2.addActionListener(this);
-
-                JButton button3 = new JButton("Line 3");
-                button3.addActionListener(this);
-
-                JButton button4 = new JButton("Line 4");
-                button4.addActionListener(this);
-
-                JButton button5 = new JButton("Line 5");
-                button5.addActionListener(this);
-
-                JCheckBox checkBox1 = new JCheckBox("1");
-                JCheckBox checkBox2 = new JCheckBox("2");
-                JCheckBox checkBox3 = new JCheckBox("3");
-
-                // Adding objects to panel
-
-                panel.add(caption);
-
-                panel.add(button1);
-                panel.add(button2);
-                panel.add(button3);
-                panel.add(button4);
-                panel.add(button5);
-
-                panel.add(checkBox1);
-                panel.add(checkBox2);
-                panel.add(checkBox3);
-
-
-            }
-
-        }
-
-    }
-    // Creating the line chart
-
-    class Graph extends ApplicationFrame {
-        public Graph(String title) {
-            super(title);
-
-            DefaultCategoryDataset dataset = createDataset();
-
-            JFreeChart chart = ChartFactory.createLineChart(
-                    "title", "category", "value", createDataset(),
-                    PlotOrientation.VERTICAL, true, true, false);
-
-
-            ChartPanel panel = new ChartPanel(chart);
-            setContentPane(panel);
-
-        }
-
-        // Creating the dataset
-
-        private DefaultCategoryDataset createDataset() {
-
-            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-            // Add values and return
-
-            String data = "Data";
-
-            dataset.addValue(null, data, null);
-
-            return null;
-        }
-
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    createAndShowGUI();
-                }
-                // Did quite some research here, I'm still not sure how it works.
-
-                private void createAndShowGUI() {
-                }
-            });
+            panel.add(checkBox1);
+            panel.add(checkBox2);
+            panel.add(checkBox3);
         }
     }
+}

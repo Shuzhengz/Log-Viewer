@@ -1,6 +1,5 @@
 package com.team1678.logviewer.backend;
 
-import com.team1678.logviewer.*;
 import java.io.*;
 import java.util.*;
 

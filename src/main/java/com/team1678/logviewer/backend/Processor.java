@@ -7,6 +7,8 @@ import com.opencsv.exceptions.CsvException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Processor {
@@ -27,7 +29,7 @@ public class Processor {
         }
         mOrganizedData = organizedData;
     }
-    public static HashMap<String, String[][]> processData() {
+    public static void processData() {
         HashMap<String, String[][]> map = new HashMap<String, String[][]>();
         for (int i = 1; i < mHeaders.size(); i++) {
             String[][] data = new String[mOrganizedData.get(i).size()][2];
@@ -37,7 +39,7 @@ public class Processor {
             }
             map.put(mHeaders.get(i).trim(), data);
         }
-        return map;
+        mProcessedData = map;
     }
 
 
@@ -62,5 +64,6 @@ public class Processor {
             }
         }
         return selectedValue;
+
     }
 }

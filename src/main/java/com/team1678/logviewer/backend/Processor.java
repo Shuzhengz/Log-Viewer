@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Processor {
+
     private static List<List<String>> mOrganizedData;
     private static final List<String> mHeaders = new ArrayList<>();
+
     private static Map<String, String[][]> mProcessedData;
 
     public void recieve(List<List<String>> rawData){
@@ -23,6 +25,7 @@ public class Processor {
         }
         mOrganizedData = organizedData;
     }
+
     public static void processData() {
         Map<String, String[][]> map = new HashMap<String, String[][]>();
         for (int i = 1; i < mHeaders.size(); i++) {
@@ -58,6 +61,5 @@ public class Processor {
             }
         }
         return selectedValue;
-
     }
 }

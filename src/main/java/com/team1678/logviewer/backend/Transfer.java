@@ -12,7 +12,6 @@ public class Transfer {
     }
 
     public Map<String, String[][]>TransferToFrontend(){
-        //Work In Progress Method
         Processor processorVal = new Processor();
 
         Processor.processData();

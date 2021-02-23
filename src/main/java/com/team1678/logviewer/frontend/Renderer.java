@@ -1,6 +1,7 @@
 package com.team1678.logviewer.frontend;
 
 import java.awt.*;
+import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 
@@ -28,7 +29,7 @@ public class Renderer extends JFrame {
         stamp.add(new JCheckBox("check"));
         stamp.add(new JLabel("label"));
 
-
+        stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1280, 720);
         stamp.pack();
         stamp.setVisible(true);

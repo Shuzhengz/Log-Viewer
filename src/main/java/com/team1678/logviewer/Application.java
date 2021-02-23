@@ -6,6 +6,7 @@ import com.team1678.logviewer.frontend.Renderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.List;
 public final class Application {
 
     private static final String PATH = "sample_log.csv";
-    List<List<String>> rawData = Input.read(PATH);
 
     private Application() throws FileNotFoundException {
     }
@@ -31,8 +31,11 @@ public final class Application {
         }
     }
 
+    List<List<String>> rawData = Input.read(PATH);
+
     public void mainloop() {
-        var display = new Renderer();
-        Renderer.Render();
+        SwingUtilities.invokeLater(() -> {
+            Renderer.Render();
+        });
     }
 }

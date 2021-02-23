@@ -32,9 +32,7 @@ public final class Application {
     }
 
     public void mainloop() {
-        // Mainloop
-        EventQueue.invokeLater(() -> {
-            var display = new Renderer();
-        });
+        var display = new Renderer();
+        display.setVisible(true);
     }
 }

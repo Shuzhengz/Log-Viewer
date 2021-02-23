@@ -15,43 +15,38 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.xy.*;
 
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
 import com.team1678.logviewer.frontend.gui.Graph;
-
 
 public class Renderer extends JFrame{
 
-    public void Renderer(){
-        this.setLayout(new FlowLayout());
-        this.add(new JButton("button"));
-        this.add(new JCheckBox("check"));
-        this.add(new JLabel("label"));
-
-        this.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
-        this.setSize(new Dimension(250, 80));
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    // frame
     static JFrame stamp;
 
-    public void initUI() {
+    public static void Renderer(){
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
+        stamp = new JFrame("LogViewer");
+
+        JPanel panel = new JPanel();
+        Logger.log("Panel Created", Severity.DEBUG);
 
         XYDataset dataset = (XYDataset) Graph.createDataset();
         JFreeChart chart = createChart(dataset);
-
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         chartPanel.setBackground(Color.white);
-        stamp.add(chartPanel);
 
-        stamp.pack();
-        stamp.setTitle("Timestamp Line Chart");
-        stamp.setLocationRelativeTo(null);
-        stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel.add(chartPanel);
+
+        stamp.add(panel);
+
+        stamp.setSize(250, 250);
+        stamp.setVisible(true);
     }
 
-    private JFreeChart createChart(XYDataset dataset) {
+    private static JFreeChart createChart(XYDataset dataset) {
 
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Data Points",

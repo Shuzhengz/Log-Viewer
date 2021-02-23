@@ -27,7 +27,7 @@ public class Graph extends ApplicationFrame {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         // Add values and return
         String data = "Data";
-        dataset.addValue(null, data, null);
+        dataset.addValue(1, data, data);
         return null;
     }
 }

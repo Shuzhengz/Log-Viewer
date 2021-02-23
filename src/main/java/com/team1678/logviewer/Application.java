@@ -14,6 +14,7 @@ import java.util.List;
 public final class Application {
 
     private static final String PATH = "sample_log.csv";
+    private static final String TITLE = "Log";
 
     private Application() throws FileNotFoundException {
     }
@@ -38,9 +39,9 @@ public final class Application {
             try {
                 UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
             } catch (Exception e) {
-                System.out.println("Substance Graphite failed to initialize");
+                Logger.log("Substance Graphite failed to initialize", Severity.ERROR);
             }
-            Renderer.Render();
+            Renderer.Render(TITLE);
         });
     }
 }

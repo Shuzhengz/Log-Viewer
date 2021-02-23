@@ -18,24 +18,24 @@ public class GUI implements ActionListener{
         frame.setVisible(true);
         frame.setLayout(new GridLayout(5, 5));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Logger.log("Frame Created", Severity.DEBUG);
+        Logger.log("Frame Created", Severity.NORMAL);
 
         // Create panel
         JPanel panel = new JPanel();
         panel.setVisible(true);
         panel.setBounds(400, 400, 400, 400);
-        Logger.log("Panel Created", Severity.DEBUG);
+        Logger.log("Panel Created", Severity.NORMAL);
 
 
         // Create button
         JButton button = new JButton("Open Graphs");
-        Logger.log("Button Created", Severity.DEBUG);
+        Logger.log("Button Created", Severity.NORMAL);
         button.addActionListener(this);
 
         // Adding objects to panel
         panel.add(button);
         panel.add(frame);
-        Logger.log("Objects Added", Severity.DEBUG);
+        Logger.log("Objects Added", Severity.NORMAL);
 
     }
 

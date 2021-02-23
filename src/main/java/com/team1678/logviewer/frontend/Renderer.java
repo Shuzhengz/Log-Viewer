@@ -1,5 +1,6 @@
 package com.team1678.logviewer.frontend;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 
@@ -12,16 +13,24 @@ public class Renderer extends JFrame {
     static JFrame stamp;
 
     public static void Render() {
-
         JFrame.setDefaultLookAndFeelDecorated(true);
 
         stamp = new JFrame("LogViewer");
 
-        JPanel panel = new JPanel();
-        Logger.log("Panel Created", Severity.DEBUG);
-        stamp.add(panel);
 
-        stamp.setSize(250, 250);
+        JPanel panel = new JPanel();
+        Logger.log("Panel Created", Severity.NORMAL);
+
+        stamp.setLayout(new FlowLayout());
+
+        stamp.add(panel);
+        stamp.add(new JButton("button"));
+        stamp.add(new JCheckBox("check"));
+        stamp.add(new JLabel("label"));
+
+
+        stamp.setSize(1280, 720);
+        stamp.pack();
         stamp.setVisible(true);
     }
 }

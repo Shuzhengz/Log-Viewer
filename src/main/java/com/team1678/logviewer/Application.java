@@ -33,6 +33,6 @@ public final class Application {
 
     public void mainloop() {
         var display = new Renderer();
-        display.setVisible(true);
+        Renderer.Render();
     }
 }

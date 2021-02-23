@@ -18,7 +18,6 @@ public class Renderer extends JFrame {
 
         stamp = new JFrame("LogViewer");
 
-
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
 

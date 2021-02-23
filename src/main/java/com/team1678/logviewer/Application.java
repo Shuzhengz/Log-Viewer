@@ -35,6 +35,11 @@ public final class Application {
 
     public void mainloop() {
         SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
+            } catch (Exception e) {
+                System.out.println("Substance Graphite failed to initialize");
+            }
             Renderer.Render();
         });
     }

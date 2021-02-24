@@ -6,6 +6,7 @@ import com.team1678.logviewer.frontend.Renderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public final class Application {
 
     private static final String PATH = "sample_log.csv";
-    List<List<String>> rawData = Input.read(PATH);
+    private static final String TITLE = "Log";
 
     private Application() throws FileNotFoundException {
     }
@@ -31,10 +32,16 @@ public final class Application {
         }
     }
 
+    List<List<String>> rawData = Input.read(PATH);
+
     public void mainloop() {
-        // Mainloop
-        EventQueue.invokeLater(() -> {
-            var display = new Renderer();
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
+            } catch (Exception e) {
+                Logger.log("Substance Graphite failed to initialize", Severity.ERROR);
+            }
+            Renderer.Render(TITLE);
         });
     }
 }

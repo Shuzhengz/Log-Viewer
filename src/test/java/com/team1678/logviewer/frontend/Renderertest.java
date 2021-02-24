@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class Renderertest {
 
     static JFrame f;
@@ -22,33 +24,15 @@ public class Renderertest {
 
     @AfterEach
     void tearDown() {
-
     }
 
     @Test
-    void renderTest() {
-        // craft the new frame
-        JFrame f = new JFrame("frame");
+    void renderderTest() {
+        JFrame.setDefaultLookAndFeelDecorated(true);
 
-        // Object
-        Renderer s = new Renderer();
-
-        // Panel
-        JPanel p = new JPanel();
-
-        JButton b = new JButton("Click");
-
-        // Adding the actionlistener to the Button
-        b.addActionListener((ActionListener) s);
-
-        // Adding the button to the panel
-        p.add(b);
-
-        f.add(p);
-
-        // Size of the Frame
-        f.setSize(500, 500);
-
-        f.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            Renderer w = new Renderer();
+            w.setVisible(true);
+        });
     }
 }

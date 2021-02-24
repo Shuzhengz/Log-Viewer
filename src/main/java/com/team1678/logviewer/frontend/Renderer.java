@@ -1,123 +1,47 @@
 package com.team1678.logviewer.frontend;
 
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.image.*;
 import javax.swing.*;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
 
-import org.jfree.chart.*;
-import org.jfree.chart.block.BlockBorder;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.chart.title.TextTitle;
-import org.jfree.data.xy.*;
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
+import com.team1678.logviewer.frontend.gui.Graph;
 
+public class Renderer extends JFrame {
 
-public class Renderer {
-
-    // frame
     static JFrame stamp;
 
-    private void initUI() {
+    public static void Render(String title) {
+        JFrame.setDefaultLookAndFeelDecorated(true);
 
-        XYDataset dataset = createDataset();
-        JFreeChart chart = createChart(dataset);
+        stamp = new JFrame("LogViewer");
 
-        ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        chartPanel.setBackground(Color.white);
-        stamp.add(chartPanel);
+        JPanel panel = new JPanel();
+        Logger.log("Panel Created", Severity.NORMAL);
 
+        stamp.setLayout(new FlowLayout());
+
+        stamp.add(panel);
+        stamp.add(new JButton("<html><b><u>Select File</u></b><br>no file selected</html>"));
+
+        stamp.add(panel);
+        stamp.add(new JButton("button1"));
+        stamp.add(new JButton("button2"));
+        stamp.add(new JButton("button3"));
+        stamp.add(new JButton("button4"));
+        stamp.add(new JButton("button5"));
+        stamp.add(new JButton("button6"));
+
+        stamp.add(new JCheckBox("check"));
+        stamp.add(new JLabel("label"));
+        //stamp.add(new Graph(title));
+
+        stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
+        stamp.setSize(1280, 720);
         stamp.pack();
-        stamp.setTitle("Timestamp Line Chart");
-        stamp.setLocationRelativeTo(null);
-        stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    private XYDataset createDataset() {
-
-        var series = new XYSeries("Bob");
-        series.add(0, 0);
-
-        var dataset = new XYSeriesCollection();
-        dataset.addSeries(series);
-
-        return dataset;
-    }
-
-    private JFreeChart createChart(XYDataset dataset) {
-
-        JFreeChart chart = ChartFactory.createXYLineChart(
-                "Data Points",
-                "Timestamps",
-                "Values",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true,
-                true,
-                false
-        );
-
-        XYPlot graphPoints = chart.getXYPlot();
-
-        var renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesPaint(0, Color.GREEN);
-        renderer.setSeriesStroke(0, new BasicStroke(2.0f));
-
-        graphPoints.setRenderer(renderer);
-        graphPoints.setBackgroundPaint(Color.WHITE);
-
-        graphPoints.setRangeGridlinesVisible(true);
-        graphPoints.setRangeGridlinePaint(Color.BLACK);
-
-        graphPoints.setDomainGridlinesVisible(true);
-        graphPoints.setDomainGridlinePaint(Color.BLACK);
-
-        chart.getLegend().setFrame(BlockBorder.NONE);
-
-        chart.setTitle(new TextTitle("Timestamps for Challenges",
-                new Font("Serif", java.awt.Font.BOLD, 18)
-            )
-        );
-
-        return chart;
-    }
-
-    // Should the Button be Pressed
-    public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
-        if (s.equals("click")) {
-            // Create a window
-            JWindow citrusWindow = new JWindow(stamp);
-
-            // Set panel
-            JPanel citrusPanel = new JPanel();
-
-            // Make the label
-            JLabel citrusLabel = new JLabel("Welcome to the Window.");
-
-            // Ready the border
-            citrusPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-
-            citrusPanel.add(citrusLabel);
-            citrusPanel.add(citrusPanel);
-
-            // set background
-            citrusPanel.setBackground(Color.green);
-
-            // setup a window size
-            citrusWindow.setSize(200, 300);
-
-            // set the visibility of the window
-            citrusWindow.setVisible(true);
-
-            // window location setup
-            citrusWindow.setLocation(100, 100);
-        }
+        stamp.setVisible(true);
+        Logger.log("Window Created", Severity.NORMAL);
     }
 }

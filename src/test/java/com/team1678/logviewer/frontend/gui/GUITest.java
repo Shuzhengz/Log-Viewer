@@ -17,6 +17,6 @@ class GUITest {
     }
 
     @Test
-    void actionPerformed() {
+    void actionPerformedTest() {
     }
 }

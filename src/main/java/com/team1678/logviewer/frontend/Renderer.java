@@ -27,15 +27,12 @@ public class Renderer extends JFrame {
         stamp.add(new JButton("<html><b><u>Select File</u></b><br>no file selected</html>"));
 
         stamp.add(panel);
-        stamp.add(new JButton("button1"));
-        stamp.add(new JButton("button2"));
-        stamp.add(new JButton("button3"));
-        stamp.add(new JButton("button4"));
-        stamp.add(new JButton("button5"));
-        stamp.add(new JButton("button6"));
+        stamp.add(new JButton("Distance & Velocity"));
+        stamp.add(new JButton("Electrical"));
+        stamp.add(new JButton("Heading"));
+        stamp.add(new JButton("Others"));
 
-        stamp.add(new JCheckBox("check"));
-        stamp.add(new JLabel("label"));
+        stamp.add(new JCheckBox("Show Error"));
         //stamp.add(new Graph(title));
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));

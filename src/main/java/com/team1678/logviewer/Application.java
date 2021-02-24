@@ -37,9 +37,10 @@ public final class Application {
     public void mainloop() {
         SwingUtilities.invokeLater(() -> {
             try {
-                UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel");
+                UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceNightShadeLookAndFeel");
+                Logger.log("Substance initialized", Severity.NORMAL);
             } catch (Exception e) {
-                Logger.log("Substance Graphite failed to initialize", Severity.ERROR);
+                Logger.log("Substance failed to initialize", Severity.ERROR);
             }
             Renderer.Render(TITLE);
         });

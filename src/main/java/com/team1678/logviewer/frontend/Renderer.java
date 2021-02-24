@@ -24,14 +24,15 @@ public class Renderer extends JFrame {
         stamp.setLayout(new FlowLayout());
 
         stamp.add(panel);
+        stamp.add(new JButton("<html><b><u>Select File</u></b><br>no file selected</html>"));
+
+        stamp.add(panel);
         stamp.add(new JButton("button1"));
         stamp.add(new JButton("button2"));
         stamp.add(new JButton("button3"));
         stamp.add(new JButton("button4"));
         stamp.add(new JButton("button5"));
         stamp.add(new JButton("button6"));
-        stamp.add(new JButton("button7"));
-        stamp.add(new JButton("button8"));
 
         stamp.add(new JCheckBox("check"));
         stamp.add(new JLabel("label"));

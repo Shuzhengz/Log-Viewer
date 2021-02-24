@@ -1,8 +1,5 @@
 package com.team1678.logviewer.backend;
 
-import com.team1678.logviewer.backend.*;
-import com.team1678.logviewer.frontend.*;
-import com.team1678.logviewer.backend.Input;
 import java.util.*;
 
 public class Transfer {

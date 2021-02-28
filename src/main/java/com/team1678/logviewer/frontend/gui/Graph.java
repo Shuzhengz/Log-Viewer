@@ -20,6 +20,7 @@ public class Graph extends ApplicationFrame {
 
         ChartPanel panel = new ChartPanel(chart);
         setContentPane(panel);
+        panel.setVisible(true);
     }
 
     // Creating the dataset

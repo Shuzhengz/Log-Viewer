@@ -33,7 +33,7 @@ public class Renderer extends JFrame {
         stamp.add(new JButton("Others"));
 
         stamp.add(new JCheckBox("Show Error"));
-        //stamp.add(new Graph(title));
+
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1280, 720);

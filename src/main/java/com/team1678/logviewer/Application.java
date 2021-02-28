@@ -10,6 +10,7 @@ import com.team1678.logviewer.io.Severity;
 import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Map;
 
 public final class Application {
 
@@ -45,7 +46,6 @@ public final class Application {
 
         List<List<String>> rawData = Input.read(PATH);
         Processor.receive(rawData);
-        transfer.TransferToFrontend();
-
+        Map<String, String[][]> processedData = transfer.TransferToFrontend();
     }
 }

@@ -12,7 +12,7 @@ public class Processor {
 
     private static Map<String, String[][]> mProcessedData;
 
-    public void recieve(List<List<String>> rawData){
+    public static void receive(List<List<String>> rawData){
         List<List<String>> organizedData = new ArrayList<>();
 
         mHeaders.addAll(rawData.get(0));
@@ -40,15 +40,15 @@ public class Processor {
     }
 
 
-    public List<String> getHeaders(){
+    public static List<String> getHeaders(){
         return mHeaders;
     }
 
-    public List<List<String>> getOrganizedData(){
+    public static List<List<String>> getOrganizedData(){
         return mOrganizedData;
     }
 
-    public Map<String, String[][]> getProcessedData(){
+    public static Map<String, String[][]> getProcessedData(){
         return mProcessedData;
     }
 

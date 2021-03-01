@@ -41,13 +41,18 @@ public class Renderer extends JFrame {
                 JFileChooser fc = new JFileChooser();
                 JFileChooser chooser = new JFileChooser();
                 FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                        "Comma Seperated Values", "csv");
+                        "Comma Separated Values", "csv");
                 chooser.setFileFilter(filter);
                 int returnVal = chooser.showOpenDialog(fc);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
                     System.out.println("You chose to open this file: " +
                             chooser.getSelectedFile().getName());
-                    csvData = chooser.getSelectedFile().getAbsolutePath();
+                    String path = chooser.getSelectedFile().getAbsolutePath();
+                    if(path.substring(path.length() - 4) == ".csv") {
+                        csvData = chooser.getSelectedFile().getAbsolutePath();
+                    } else {
+                        System.out.println("This is not of type .csv! It will be ignored.");
+                    }
                     System.out.println(csvData);
                 }
                 //fileSelector.setText("Ok Button is clicked here");

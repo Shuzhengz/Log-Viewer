@@ -50,6 +50,7 @@ public class Renderer extends JFrame {
                     String path = chooser.getSelectedFile().getAbsolutePath();
                     if(path.substring(path.length() - 4) == ".csv") {
                         csvData = chooser.getSelectedFile().getAbsolutePath();
+                        fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
                     } else {
                         System.out.println("This is not of type .csv! It will be ignored.");
                     }

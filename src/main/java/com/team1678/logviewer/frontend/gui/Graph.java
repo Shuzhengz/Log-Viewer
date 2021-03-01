@@ -1,5 +1,6 @@
 package com.team1678.logviewer.frontend.gui;
 
+
 import com.team1678.logviewer.frontend.XYDataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -31,7 +32,7 @@ public class Graph extends ApplicationFrame {
         dataset.addValue(1, data, data);
         return null;
     }
-
+  
     public var XYDataset (final String title) {
         super (title);
         final XYDataset plot = new XYDataset();
@@ -61,7 +62,6 @@ public class Graph extends ApplicationFrame {
     }
 
     public static void main(final String[] args) {
-
         final XYDataset plot = new XYDataset();
         RefineryUtilities.centerFrameOnScreen(plot);
         plot.setVisible(true);

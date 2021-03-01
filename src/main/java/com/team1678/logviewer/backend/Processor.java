@@ -11,8 +11,9 @@ public class Processor {
     private static final List<String> mHeaders = new ArrayList<>();
 
     private static Map<String, String[][]> mProcessedData;
-
-    public void recieve(List<List<String>> rawData){
+    
+    // Receives data from Input.java and organize it so that there are arrays containing each header and its values
+    public static void receive(List<List<String>> rawData){
         List<List<String>> organizedData = new ArrayList<>();
 
         mHeaders.addAll(rawData.get(0));
@@ -25,7 +26,8 @@ public class Processor {
         }
         mOrganizedData = organizedData;
     }
-
+    
+    // From the organized data from receive(), create a collection of 2d time vs data arrays with keys being the headers
     public static void processData() {
         Map<String, String[][]> map = new HashMap<String, String[][]>();
         for (int i = 1; i < mHeaders.size(); i++) {
@@ -40,15 +42,15 @@ public class Processor {
     }
 
 
-    public List<String> getHeaders(){
+    public static List<String> getHeaders(){
         return mHeaders;
     }
 
-    public List<List<String>> getOrganizedData(){
+    public static List<List<String>> getOrganizedData(){
         return mOrganizedData;
     }
 
-    public Map<String, String[][]> getProcessedData(){
+    public static Map<String, String[][]> getProcessedData(){
         return mProcessedData;
     }
 

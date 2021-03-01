@@ -2,14 +2,15 @@ package com.team1678.logviewer;
 
 import com.team1678.logviewer.backend.Input;
 import com.team1678.logviewer.backend.Processor;
+import com.team1678.logviewer.backend.Transfer;
 import com.team1678.logviewer.frontend.Renderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Map;
 
 public final class Application {
 
@@ -20,7 +21,7 @@ public final class Application {
     }
 
     public static Application app = null;
-    private static Processor processor = new Processor();
+    public static Transfer transfer;
 
     static {
         try {
@@ -32,8 +33,6 @@ public final class Application {
         }
     }
 
-    List<List<String>> rawData = Input.read(PATH);
-
     public void mainloop() {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -44,5 +43,9 @@ public final class Application {
             }
             Renderer.Render(TITLE);
         });
+
+        List<List<String>> rawData = Input.read(PATH);
+        Processor.receive(rawData);
+        Map<String, String[][]> processedData = transfer.TransferToFrontend();
     }
 }

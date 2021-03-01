@@ -58,7 +58,6 @@ public class Renderer extends JFrame {
                     //  Block of code to handle errors
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
-                System.out.println(csvData);
             }
         });
 

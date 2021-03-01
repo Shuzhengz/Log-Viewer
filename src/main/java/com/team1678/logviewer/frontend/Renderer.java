@@ -1,9 +1,13 @@
 package com.team1678.logviewer.frontend;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.*;
+import java.io.File;
 import javax.swing.*;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
@@ -13,6 +17,11 @@ public class Renderer extends JFrame {
 
     static JFrame stamp;
 
+    static String csvData;
+    static String returnDataPath() {
+        // code to be executed
+        return csvData;
+    }
     public static void Render(String title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
@@ -24,7 +33,26 @@ public class Renderer extends JFrame {
         stamp.setLayout(new FlowLayout());
 
         stamp.add(panel);
-        stamp.add(new JButton("<html><b><u>Select File</u></b><br>no file selected</html>"));
+        JButton fileSelector = new JButton("<html><b><u>Select File</u></b><br>no file selected</html>");
+        stamp.add(fileSelector);
+        fileSelector.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //Code ran when the button is clicked
+                JFileChooser fc = new JFileChooser();
+                JFileChooser chooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                        "Comma Seperated Values", "csv");
+                chooser.setFileFilter(filter);
+                int returnVal = chooser.showOpenDialog(fc);
+                if(returnVal == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " +
+                            chooser.getSelectedFile().getName());
+                    csvData = chooser.getSelectedFile().getAbsolutePath();
+                    System.out.println(csvData);
+                }
+                //fileSelector.setText("Ok Button is clicked here");
+            }
+        });
 
         stamp.add(panel);
         stamp.add(new JButton("Distance & Velocity"));

@@ -58,13 +58,6 @@ public class Renderer extends JFrame {
                     //  Block of code to handle errors
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
-                if (path.substring(path.length() - 4) == ".csv") {
-                    csvData = chooser.getSelectedFile().getAbsolutePath();
-                    Logger.log("Path read successful, path: " + csvData, Severity.NORMAL);
-                    fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
-                } else {
-                    Logger.log("Invalid file type input", Severity.ERROR);
-                }
                 System.out.println(csvData);
             }
         });

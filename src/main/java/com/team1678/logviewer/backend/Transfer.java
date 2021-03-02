@@ -8,11 +8,15 @@ public class Transfer {
         throw new IllegalStateException("Utility Class");
     }
 
-    public Map<String, String[][]>TransferToFrontend(){
-        Processor processorVal = new Processor();
-
-        Processor.processData();
-        Map<String, String[][]> returnVal = processorVal.getProcessedData();
-        return returnVal;
+    public static Map<String, String[][]>TransferToFrontend(){
+        try {
+            //Input inputReader = new Input();
+            Processor processorVal = new Processor();
+            Processor.processData();
+            Map<String, String[][]> returnVal = processorVal.getProcessedData();
+            return returnVal;
+        } catch (Exception e){
+            return null;
+        }
     }
 }

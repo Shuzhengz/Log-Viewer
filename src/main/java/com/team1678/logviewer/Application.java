@@ -22,7 +22,7 @@ public final class Application {
     }
 
     public static Application app = null;
-    public static Transfer transfer;
+//    public static Transfer transfer = new Transfer();
 
     static {
         try {
@@ -53,6 +53,6 @@ public final class Application {
         String path = Renderer.returnDataPath();
         List<List<String>> rawData = Input.read(path);
         Processor.receive(rawData);
-        Map<String, String[][]> processedData = transfer.TransferToFrontend();
+        Map<String, String[][]> processedData = Transfer.TransferToFrontend();
     }
 }

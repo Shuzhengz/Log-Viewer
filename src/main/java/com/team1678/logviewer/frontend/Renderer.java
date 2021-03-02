@@ -19,10 +19,16 @@ public class Renderer extends JFrame {
     static JFrame stamp;
 
     static String csvData;
+    static boolean fileSelected;
 
     public static String returnDataPath() {
         // return the csvData variable to the main app
         return csvData;
+    }
+
+    public static boolean returnFileSelected() {
+        // return if a file is selected
+        return fileSelected;
     }
 
     public static void Render(String title) {
@@ -52,13 +58,13 @@ public class Renderer extends JFrame {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
                     Input.read(csvData);
-                    Logger.log("Path read successful, path: " + csvData, Severity.NORMAL);
+                    Logger.log("Path read successful, Path: " + csvData, Severity.NORMAL);
                     fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
+                    fileSelected = true;
                 } catch (Exception ee) {
                     //  Block of code to handle errors
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
-                System.out.println(csvData);
             }
         });
 

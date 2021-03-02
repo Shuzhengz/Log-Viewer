@@ -14,8 +14,9 @@ import java.util.Map;
 
 public final class Application {
 
-    private static final String PATH = "sample_log.csv";
     private static final String TITLE = "Log";
+
+    public volatile boolean fileSelected = false;
 
     private Application() throws FileNotFoundException {
     }
@@ -44,7 +45,13 @@ public final class Application {
             Renderer.Render(TITLE);
         });
 
-        List<List<String>> rawData = Input.read(PATH);
+        while (!fileSelected) {
+            Thread.onSpinWait();
+            fileSelected = Renderer.returnFileSelected();
+        }
+
+        String path = Renderer.returnDataPath();
+        List<List<String>> rawData = Input.read(path);
         Processor.receive(rawData);
         Map<String, String[][]> processedData = transfer.TransferToFrontend();
     }

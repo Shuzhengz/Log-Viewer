@@ -17,10 +17,10 @@ public class Transfer {
             Processor processorVal = new Processor();
             Processor.processData();
             Map<String, String[][]> returnVal = processorVal.getProcessedData();
-            Logger.log("TransferToFrontend returns returnVal", Severity.NORMAL);
+            Logger.log("Data transferred", Severity.NORMAL);
             return returnVal;
         } catch (Exception e){
-            Logger.log("Exception thrown in TransferToFrontend", Severity.ERROR);
+            Logger.log("Error transfering", Severity.ERROR);
             return null;
         }
     }

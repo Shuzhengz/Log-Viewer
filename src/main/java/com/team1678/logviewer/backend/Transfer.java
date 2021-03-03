@@ -20,7 +20,7 @@ public class Transfer {
             Logger.log("Data transferred", Severity.NORMAL);
             return returnVal;
         } catch (Exception e){
-            Logger.log("Error transfering", Severity.ERROR);
+            Logger.log("Error transferring", Severity.ERROR);
             return null;
         }
     }

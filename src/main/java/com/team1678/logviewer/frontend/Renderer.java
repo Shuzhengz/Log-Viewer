@@ -1,10 +1,7 @@
 package com.team1678.logviewer.frontend;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.*;
-import java.io.File;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -12,7 +9,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.team1678.logviewer.backend.Input;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
-import com.team1678.logviewer.frontend.gui.Graph;
 
 public class Renderer extends JFrame {
 
@@ -75,12 +71,14 @@ public class Renderer extends JFrame {
         stamp.add(new JButton("Others"));
 
         stamp.add(new JCheckBox("Show Error"));
-        //stamp.add(new Graph(title));
+
+        stamp.getContentPane().add(Graph.createGraph());
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1280, 720);
         stamp.pack();
         stamp.setVisible(true);
+        stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         Logger.log("Window Created", Severity.NORMAL);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

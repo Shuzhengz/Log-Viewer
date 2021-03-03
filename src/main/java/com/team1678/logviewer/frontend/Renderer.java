@@ -20,6 +20,7 @@ public class Renderer extends JFrame {
 
     static String csvData;
     static boolean fileSelected;
+    static String lastButtonPressed;
 
     public static String returnDataPath() {
         // return the csvData variable to the main app
@@ -29,6 +30,10 @@ public class Renderer extends JFrame {
     public static boolean returnFileSelected() {
         // return if a file is selected
         return fileSelected;
+    }
+
+    public static String returnLastButtonPressed(){
+        return lastButtonPressed;
     }
 
     public static void Render(String title) {
@@ -69,12 +74,32 @@ public class Renderer extends JFrame {
         });
 
         stamp.add(panel);
-        stamp.add(new JButton("Distance & Velocity"));
-        stamp.add(new JButton("Electrical"));
-        stamp.add(new JButton("Heading"));
-        stamp.add(new JButton("Others"));
+        JButton DistanceVelocity = new JButton("Distance & Velocity");
+        stamp.add(DistanceVelocity);
+        DistanceVelocity.addActionListener(e -> {
+            lastButtonPressed = "Distance & Velocity";
+        });
 
-        stamp.add(new JCheckBox("Show Error"));
+        JButton Electrical = new JButton("Electrical");
+        stamp.add(Electrical);
+        Electrical.addActionListener(e -> {
+            lastButtonPressed = "Electrical";
+        });
+
+        JButton Heading = new JButton("Heading");
+        stamp.add(Heading);
+        Heading.addActionListener(e -> {
+            lastButtonPressed = "Heading";
+        });
+
+        JButton Others = new JButton("Others");
+        stamp.add(Others);
+        Others.addActionListener(e -> {
+            lastButtonPressed = "Others";
+        });
+
+        JCheckBox ShowError = new JCheckBox("Show Error");
+        stamp.add(ShowError);
         //stamp.add(new Graph(title));
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));

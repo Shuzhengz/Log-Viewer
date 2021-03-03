@@ -38,7 +38,7 @@ public class Graph extends ApplicationFrame {
     public static ChartPanel createGraph(){
         XYDataset ds = createDataset();
 
-        JFreeChart chart = ChartFactory.createXYLineChart("Test Chart",
+        JFreeChart chart = ChartFactory.createXYLineChart("LogViewer",
                 "x", "y", ds, PlotOrientation.VERTICAL, true, true,
                 false);
 

@@ -22,7 +22,6 @@ public final class Application {
     }
 
     public static Application app = null;
-//    public static Transfer transfer = new Transfer();
 
     static {
         try {

@@ -31,7 +31,7 @@ public class Renderer extends JFrame {
         return lastButtonPressed;
     }
 
-    public static void Render(String title) {
+    public static void render(String title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
         stamp = new JFrame(title);

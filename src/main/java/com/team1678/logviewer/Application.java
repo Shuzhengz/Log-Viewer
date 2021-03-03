@@ -16,7 +16,7 @@ public final class Application {
 
     private static final String TITLE = "Log";
 
-    public volatile boolean fileSelected = false;
+    public volatile boolean fileSelected;
 
     private Application() throws FileNotFoundException {
     }
@@ -41,7 +41,7 @@ public final class Application {
             } catch (Exception e) {
                 Logger.log("Substance failed to initialize", Severity.ERROR);
             }
-            Renderer.Render(TITLE);
+            Renderer.render(TITLE);
         });
 
         while (!fileSelected) {

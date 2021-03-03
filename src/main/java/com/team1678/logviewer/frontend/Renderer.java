@@ -1,18 +1,13 @@
 package com.team1678.logviewer.frontend;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.*;
-import java.io.File;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.team1678.logviewer.backend.Input;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
-import com.team1678.logviewer.frontend.gui.Graph;
 
 public class Renderer extends JFrame {
 
@@ -36,10 +31,10 @@ public class Renderer extends JFrame {
         return lastButtonPressed;
     }
 
-    public static void Render(String title) {
+    public static void render(String title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        stamp = new JFrame("LogViewer");
+        stamp = new JFrame(title);
 
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
@@ -62,7 +57,6 @@ public class Renderer extends JFrame {
                 try {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
-                    Input.read(csvData);
                     Logger.log("Path read successful, Path: " + csvData, Severity.NORMAL);
                     fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
                     fileSelected = true;
@@ -74,38 +68,32 @@ public class Renderer extends JFrame {
         });
 
         stamp.add(panel);
-        JButton DistanceVelocity = new JButton("Distance & Velocity");
-        stamp.add(DistanceVelocity);
-        DistanceVelocity.addActionListener(e -> {
-            lastButtonPressed = "Distance & Velocity";
-        });
+        JButton distanceVelocity = new JButton("Distance & Velocity");
+        stamp.add(distanceVelocity);
+        distanceVelocity.addActionListener(e -> lastButtonPressed = "Distance & Velocity");
 
-        JButton Electrical = new JButton("Electrical");
-        stamp.add(Electrical);
-        Electrical.addActionListener(e -> {
-            lastButtonPressed = "Electrical";
-        });
+        JButton electrical = new JButton("Electrical");
+        stamp.add(electrical);
+        electrical.addActionListener(e -> lastButtonPressed = "Electrical");
 
-        JButton Heading = new JButton("Heading");
-        stamp.add(Heading);
-        Heading.addActionListener(e -> {
-            lastButtonPressed = "Heading";
-        });
+        JButton heading = new JButton("Heading");
+        stamp.add(heading);
+        heading.addActionListener(e -> lastButtonPressed = "Heading");
 
-        JButton Others = new JButton("Others");
-        stamp.add(Others);
-        Others.addActionListener(e -> {
-            lastButtonPressed = "Others";
-        });
+        JButton others = new JButton("Others");
+        stamp.add(others);
+        others.addActionListener(e -> lastButtonPressed = "Others");
 
-        JCheckBox ShowError = new JCheckBox("Show Error");
-        stamp.add(ShowError);
-        //stamp.add(new Graph(title));
+        JCheckBox showError = new JCheckBox("Show Error");
+        stamp.add(showError);
+        stamp.getContentPane().add(Graph.createGraph());
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1280, 720);
         stamp.pack();
         stamp.setVisible(true);
+        stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         Logger.log("Window Created", Severity.NORMAL);
+        stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

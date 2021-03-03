@@ -6,7 +6,6 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.team1678.logviewer.backend.Input;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -16,6 +15,7 @@ public class Renderer extends JFrame {
 
     static String csvData;
     static boolean fileSelected;
+    static String lastButtonPressed;
 
     public static String returnDataPath() {
         // return the csvData variable to the main app
@@ -25,6 +25,10 @@ public class Renderer extends JFrame {
     public static boolean returnFileSelected() {
         // return if a file is selected
         return fileSelected;
+    }
+
+    public static String returnLastButtonPressed(){
+        return lastButtonPressed;
     }
 
     public static void Render(String title) {
@@ -53,7 +57,6 @@ public class Renderer extends JFrame {
                 try {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
-                    Input.read(csvData);
                     Logger.log("Path read successful, Path: " + csvData, Severity.NORMAL);
                     fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
                     fileSelected = true;
@@ -65,13 +68,24 @@ public class Renderer extends JFrame {
         });
 
         stamp.add(panel);
-        stamp.add(new JButton("Distance & Velocity"));
-        stamp.add(new JButton("Electrical"));
-        stamp.add(new JButton("Heading"));
-        stamp.add(new JButton("Others"));
+        JButton distanceVelocity = new JButton("Distance & Velocity");
+        stamp.add(distanceVelocity);
+        distanceVelocity.addActionListener(e -> lastButtonPressed = "Distance & Velocity");
 
-        stamp.add(new JCheckBox("Show Error"));
+        JButton electrical = new JButton("Electrical");
+        stamp.add(electrical);
+        electrical.addActionListener(e -> lastButtonPressed = "Electrical");
 
+        JButton heading = new JButton("Heading");
+        stamp.add(heading);
+        heading.addActionListener(e -> lastButtonPressed = "Heading");
+
+        JButton others = new JButton("Others");
+        stamp.add(others);
+        others.addActionListener(e -> lastButtonPressed = "Others");
+
+        JCheckBox showError = new JCheckBox("Show Error");
+        stamp.add(showError);
         stamp.getContentPane().add(Graph.createGraph());
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));

@@ -34,7 +34,7 @@ public class Renderer extends JFrame {
     public static void Render(String title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        stamp = new JFrame("LogViewer");
+        stamp = new JFrame(title);
 
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
@@ -82,5 +82,6 @@ public class Renderer extends JFrame {
         stamp.pack();
         stamp.setVisible(true);
         Logger.log("Window Created", Severity.NORMAL);
+        stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

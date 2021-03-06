@@ -6,6 +6,9 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.team1678.logviewer.backend.Input;
+import com.team1678.logviewer.backend.Processor;
+import com.team1678.logviewer.backend.Transfer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -67,6 +70,7 @@ public class Renderer extends JFrame {
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
             }
+            Processor.receive(Input.read(Transfer.returnFilePath()));
             stamp.getContentPane().add(Graph.createGraph());
         });
 

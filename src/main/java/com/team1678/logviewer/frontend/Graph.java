@@ -1,5 +1,7 @@
 package com.team1678.logviewer.frontend;
 
+import com.team1678.logviewer.io.Logger;
+import com.team1678.logviewer.io.Severity;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -27,10 +29,15 @@ public class Graph extends ApplicationFrame {
     public static ChartPanel createGraph(){
         XYDataset ds = Dataset.createDataset();
 
-        JFreeChart chart = ChartFactory.createXYLineChart("LogViewer",
-                "Time", "Value", ds, PlotOrientation.VERTICAL, true, true,
-                false);
-
-        return new ChartPanel(chart);
+        try {
+            JFreeChart chart = ChartFactory.createXYLineChart("LogViewer",
+                    "Time", "Value", ds, PlotOrientation.VERTICAL, true, true,
+                    false);
+            Logger.log("Graph Created", Severity.NORMAL);
+            return new ChartPanel(chart);
+        } catch (Exception e) {
+            Logger.log("Error creating graph", Severity.ERROR);
+            return null;
+        }
     }
 }

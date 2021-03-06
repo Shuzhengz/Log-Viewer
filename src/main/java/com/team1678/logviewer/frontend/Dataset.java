@@ -1,6 +1,8 @@
 package com.team1678.logviewer.frontend;
 
+import com.team1678.logviewer.backend.Input;
 import com.team1678.logviewer.backend.Processor;
+import com.team1678.logviewer.backend.Transfer;
 
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
@@ -26,7 +28,7 @@ public class Dataset extends Graph{
         int kHeaderCount = getHeaderCount(kHeaders);
         DefaultXYDataset dataset = new DefaultXYDataset();
 
-        for (int headerNum = 1; headerNum <= kHeaderCount; headerNum++){
+        for (int headerNum = 1; headerNum < kHeaderCount; headerNum++){
             dataset.addSeries(kHeaders.get(headerNum), leftPos);
         }
         return dataset;

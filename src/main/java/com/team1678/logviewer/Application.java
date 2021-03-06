@@ -55,14 +55,6 @@ public final class Application {
             fileSelected = Renderer.returnFileSelected();
         }
 
-        String path = Renderer.returnDataPath();
-        List<List<String>> rawData = Input.read(path);
-        Processor.receive(rawData);
         Map<String, String[][]> processedData = Transfer.TransferToFrontend();
-
-        //Renderer.updateGraph();
-
-        System.out.println(processedData);
-        System.out.println(Processor.getHeaders());
     }
 }

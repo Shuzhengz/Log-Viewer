@@ -11,7 +11,7 @@ import com.team1678.logviewer.io.Severity;
 
 public class Renderer extends JFrame {
 
-    static JFrame stamp;
+    public static JFrame stamp;
 
     static String csvData;
     static boolean fileSelected;
@@ -31,10 +31,10 @@ public class Renderer extends JFrame {
         return lastButtonPressed;
     }
 
-    public static void render(String title) {
+    public static void render() {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        stamp = new JFrame(title);
+        stamp = new JFrame("LogViewer");
 
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
@@ -49,7 +49,8 @@ public class Renderer extends JFrame {
             //Code ran when the button is clicked
             JFileChooser fc = new JFileChooser();
             JFileChooser chooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Comma Separated Values (CSV)", "csv");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Comma Separated Values (*.csv)", "csv");
             chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(fc);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -58,7 +59,8 @@ public class Renderer extends JFrame {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
                     Logger.log("Path read successful, Path: " + csvData, Severity.NORMAL);
-                    fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
+                    fileSelector.setText("<html><b><u>Select File</u></b><br>" +
+                            chooser.getSelectedFile().getName() + "</html>");
                     fileSelected = true;
                 } catch (Exception ee) {
                     //  Block of code to handle errors
@@ -86,6 +88,7 @@ public class Renderer extends JFrame {
 
         JCheckBox showError = new JCheckBox("Show Error");
         stamp.add(showError);
+
         stamp.getContentPane().add(Graph.createGraph());
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
@@ -93,7 +96,10 @@ public class Renderer extends JFrame {
         stamp.pack();
         stamp.setVisible(true);
         stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        Logger.log("Window Created", Severity.NORMAL);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+    public static void updateGraph(){
     }
 }

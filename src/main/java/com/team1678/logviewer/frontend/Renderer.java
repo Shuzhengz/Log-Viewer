@@ -67,6 +67,7 @@ public class Renderer extends JFrame {
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
             }
+            stamp.getContentPane().add(Graph.createGraph());
         });
 
         stamp.add(panel);
@@ -89,8 +90,6 @@ public class Renderer extends JFrame {
         JCheckBox showError = new JCheckBox("Show Error");
         stamp.add(showError);
 
-        stamp.getContentPane().add(Graph.createGraph());
-
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1280, 720);
         stamp.pack();
@@ -98,8 +97,5 @@ public class Renderer extends JFrame {
         stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    }
-
-    public static void updateGraph(){
     }
 }

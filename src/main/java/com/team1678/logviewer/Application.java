@@ -41,7 +41,10 @@ public final class Application {
                 Logger.log("Substance initialized", Severity.NORMAL);
             } catch (Exception e) {
                 Logger.log("Substance failed to initialize", Severity.ERROR);
+            } finally {
+                Logger.log("Substance ran", Severity.NORMAL);
             }
+
             try {
                 Renderer.render();
                 Logger.log("Window Created", Severity.NORMAL);

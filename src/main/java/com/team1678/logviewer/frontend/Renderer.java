@@ -91,15 +91,11 @@ public class Renderer extends JFrame {
         stamp.add(others);
         others.addActionListener(e -> lastButtonPressed = "Others");
 
-        JCheckBox showError = new JCheckBox("Show Error");
-        stamp.add(showError);
-
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
-        stamp.setSize(1280, 720);
+        stamp.setSize(1920, 1080);
         stamp.pack();
         stamp.setVisible(true);
         stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 }

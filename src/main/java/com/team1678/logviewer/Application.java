@@ -1,23 +1,19 @@
 package com.team1678.logviewer;
 
-import com.team1678.logviewer.backend.Input;
-import com.team1678.logviewer.backend.Processor;
 import com.team1678.logviewer.backend.Transfer;
-import com.team1678.logviewer.frontend.Graph;
-import com.team1678.logviewer.frontend.Renderer;
+import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Map;
 
 public final class Application {
 
     public volatile boolean fileSelected;
 
-    private Renderer window = new Renderer();
+    private MainRenderer window = new MainRenderer();
 
     private Application() throws FileNotFoundException {
     }
@@ -46,7 +42,7 @@ public final class Application {
             }
 
             try {
-                Renderer.render();
+                MainRenderer.render();
                 Logger.log("Window Created", Severity.NORMAL);
             } catch (Exception e ){
                 Logger.log("Error creating window", Severity.FATAL);
@@ -55,7 +51,7 @@ public final class Application {
 
         while (!fileSelected) {
             Thread.onSpinWait();
-            fileSelected = Renderer.returnFileSelected();
+            fileSelected = MainRenderer.returnFileSelected();
         }
 
         Map<String, String[][]> processedData = Transfer.TransferToFrontend();

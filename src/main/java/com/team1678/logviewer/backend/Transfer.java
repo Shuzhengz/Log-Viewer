@@ -1,6 +1,6 @@
 package com.team1678.logviewer.backend;
 
-import com.team1678.logviewer.frontend.Renderer;
+import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -27,6 +27,6 @@ public class Transfer {
     }
 
     public static String returnFilePath() {
-        return Renderer.returnDataPath();
+        return MainRenderer.returnDataPath();
     }
 }

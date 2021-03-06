@@ -12,7 +12,7 @@ import com.team1678.logviewer.backend.Transfer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
-public class Renderer extends JFrame {
+public class MainRenderer extends JFrame {
 
     public static JFrame stamp;
 
@@ -95,7 +95,6 @@ public class Renderer extends JFrame {
         stamp.setSize(1920, 1080);
         stamp.pack();
         stamp.setVisible(true);
-        stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

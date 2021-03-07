@@ -1,6 +1,6 @@
 package com.team1678.logviewer;
 
-import com.team1678.logviewer.backend.Transfer;
+import com.team1678.logviewer.frontend.GraphRenderer;
 import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
@@ -53,7 +53,5 @@ public final class Application {
             Thread.onSpinWait();
             fileSelected = MainRenderer.returnFileSelected();
         }
-
-        Map<String, String[][]> processedData = Transfer.TransferToFrontend();
     }
 }

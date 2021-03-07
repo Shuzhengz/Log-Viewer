@@ -6,9 +6,6 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.team1678.logviewer.backend.Input;
-import com.team1678.logviewer.backend.Processor;
-import com.team1678.logviewer.backend.Transfer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -37,14 +34,13 @@ public class MainRenderer extends JFrame {
     public static void render() {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        stamp = new JFrame("LogViewer");
+        stamp = new JFrame("LogViewer Selector");
 
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
 
         stamp.setLayout(new FlowLayout());
 
-        stamp.add(panel);
         JButton fileSelector = new JButton("<html><b><u>Select File</u></b><br>no file selected</html>");
         stamp.add(fileSelector);
 
@@ -70,8 +66,23 @@ public class MainRenderer extends JFrame {
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
             }
-            Processor.receive(Input.read(Transfer.returnFilePath()));
-            stamp.getContentPane().add(Graph.createGraph());
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceNightShadeLookAndFeel");
+                    Logger.log("Substance initialized", Severity.NORMAL);
+                } catch (Exception ee) {
+                    Logger.log("Substance failed to initialize", Severity.ERROR);
+                } finally {
+                    Logger.log("Substance ran", Severity.NORMAL);
+                }
+
+                try {
+                    GraphRenderer.render("LogViewer");
+                    Logger.log("Graph window created", Severity.NORMAL);
+                } catch (Exception ee ){
+                    Logger.log("Error creating graph window", Severity.ERROR);
+                }
+            });
         });
 
         stamp.add(panel);

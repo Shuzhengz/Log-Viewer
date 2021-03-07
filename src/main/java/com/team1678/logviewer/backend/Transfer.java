@@ -14,7 +14,6 @@ public class Transfer {
 
     public static Map<String, String[][]>TransferToFrontend(){
         try {
-            //Input inputReader = new Input();
             Processor processorVal = new Processor();
             Processor.processData();
             Map<String, String[][]> returnVal = processorVal.getProcessedData();

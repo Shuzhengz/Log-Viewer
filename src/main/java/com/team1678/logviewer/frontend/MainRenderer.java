@@ -13,6 +13,8 @@ public class MainRenderer extends JFrame {
 
     public static JFrame stamp;
 
+    public static final String TITLE = "Graph";
+
     static String csvData;
     static boolean fileSelected;
     static String lastButtonPressed;
@@ -77,7 +79,7 @@ public class MainRenderer extends JFrame {
                 }
 
                 try {
-                    GraphRenderer.render("LogViewer");
+                    GraphRenderer.render(TITLE);
                     Logger.log("Graph window created", Severity.NORMAL);
                 } catch (Exception ee ){
                     Logger.log("Error creating graph window", Severity.ERROR);

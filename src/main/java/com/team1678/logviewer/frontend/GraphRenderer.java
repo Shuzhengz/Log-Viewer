@@ -15,7 +15,7 @@ public class GraphRenderer extends JFrame {
     public static void render(String title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        frame = new JFrame("LogViewer Graph");
+        frame = new JFrame(title);
 
         JPanel panel = new JPanel();
         Logger.log("Graph Panel Created", Severity.NORMAL);

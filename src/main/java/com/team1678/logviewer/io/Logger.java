@@ -19,7 +19,7 @@ public class Logger {
         if (!LOG_ACTIVATED) return;
 
         // Creates file if not created
-        final File logs = new File("logs.txt");
+        final File logs = new File("LogViewer_logs.txt");
         try {
             logCreated = logs.createNewFile();
         } catch(IOException | SecurityException e) {

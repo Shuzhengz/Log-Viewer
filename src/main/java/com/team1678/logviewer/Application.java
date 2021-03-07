@@ -1,22 +1,19 @@
 package com.team1678.logviewer;
 
-import com.team1678.logviewer.backend.Input;
-import com.team1678.logviewer.backend.Processor;
-import com.team1678.logviewer.backend.Transfer;
-import com.team1678.logviewer.frontend.Renderer;
+import com.team1678.logviewer.frontend.GraphRenderer;
+import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Map;
 
 public final class Application {
 
-    private static final String TITLE = "Log";
-
     public volatile boolean fileSelected;
+
+    private MainRenderer window = new MainRenderer();
 
     private Application() throws FileNotFoundException {
     }
@@ -40,18 +37,21 @@ public final class Application {
                 Logger.log("Substance initialized", Severity.NORMAL);
             } catch (Exception e) {
                 Logger.log("Substance failed to initialize", Severity.ERROR);
+            } finally {
+                Logger.log("Substance ran", Severity.NORMAL);
             }
-            Renderer.render(TITLE);
+
+            try {
+                MainRenderer.render();
+                Logger.log("Window Created", Severity.NORMAL);
+            } catch (Exception e ){
+                Logger.log("Error creating window", Severity.FATAL);
+            }
         });
 
         while (!fileSelected) {
             Thread.onSpinWait();
-            fileSelected = Renderer.returnFileSelected();
+            fileSelected = MainRenderer.returnFileSelected();
         }
-
-        String path = Renderer.returnDataPath();
-        List<List<String>> rawData = Input.read(path);
-        Processor.receive(rawData);
-        Map<String, String[][]> processedData = Transfer.TransferToFrontend();
     }
 }

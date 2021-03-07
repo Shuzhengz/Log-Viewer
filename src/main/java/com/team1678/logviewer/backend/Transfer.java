@@ -1,5 +1,6 @@
 package com.team1678.logviewer.backend;
 
+import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
@@ -13,7 +14,6 @@ public class Transfer {
 
     public static Map<String, String[][]>TransferToFrontend(){
         try {
-            //Input inputReader = new Input();
             Processor processorVal = new Processor();
             Processor.processData();
             Map<String, String[][]> returnVal = processorVal.getProcessedData();
@@ -23,5 +23,9 @@ public class Transfer {
             Logger.log("Error transferring", Severity.ERROR);
             return null;
         }
+    }
+
+    public static String returnFilePath() {
+        return MainRenderer.returnDataPath();
     }
 }

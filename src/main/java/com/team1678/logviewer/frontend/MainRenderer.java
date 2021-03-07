@@ -9,9 +9,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
-public class Renderer extends JFrame {
+public class MainRenderer extends JFrame {
 
-    static JFrame stamp;
+    public static JFrame stamp;
+
+    public static final String TITLE = "Graph";
 
     static String csvData;
     static boolean fileSelected;
@@ -31,17 +33,16 @@ public class Renderer extends JFrame {
         return lastButtonPressed;
     }
 
-    public static void render(String title) {
+    public static void render() {
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        stamp = new JFrame(title);
+        stamp = new JFrame("LogViewer Selector");
 
         JPanel panel = new JPanel();
         Logger.log("Panel Created", Severity.NORMAL);
 
         stamp.setLayout(new FlowLayout());
 
-        stamp.add(panel);
         JButton fileSelector = new JButton("<html><b><u>Select File</u></b><br>no file selected</html>");
         stamp.add(fileSelector);
 
@@ -49,7 +50,8 @@ public class Renderer extends JFrame {
             //Code ran when the button is clicked
             JFileChooser fc = new JFileChooser();
             JFileChooser chooser = new JFileChooser();
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Comma Separated Values (CSV)", "csv");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Comma Separated Values (*.csv)", "csv");
             chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(fc);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -58,13 +60,31 @@ public class Renderer extends JFrame {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
                     Logger.log("Path read successful, Path: " + csvData, Severity.NORMAL);
-                    fileSelector.setText("<html><b><u>Select File</u></b><br>" + chooser.getSelectedFile().getName() + "</html>");
+                    fileSelector.setText("<html><b><u>Select File</u></b><br>" +
+                            chooser.getSelectedFile().getName() + "</html>");
                     fileSelected = true;
                 } catch (Exception ee) {
                     //  Block of code to handle errors
                     Logger.log("Invalid file type input", Severity.ERROR);
                 }
             }
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    UIManager.setLookAndFeel("org.pushingpixels.substance.api.skin.SubstanceNightShadeLookAndFeel");
+                    Logger.log("Substance initialized", Severity.NORMAL);
+                } catch (Exception ee) {
+                    Logger.log("Substance failed to initialize", Severity.ERROR);
+                } finally {
+                    Logger.log("Substance ran", Severity.NORMAL);
+                }
+
+                try {
+                    GraphRenderer.render(TITLE);
+                    Logger.log("Graph window created", Severity.NORMAL);
+                } catch (Exception ee ){
+                    Logger.log("Error creating graph window", Severity.ERROR);
+                }
+            });
         });
 
         stamp.add(panel);
@@ -84,16 +104,10 @@ public class Renderer extends JFrame {
         stamp.add(others);
         others.addActionListener(e -> lastButtonPressed = "Others");
 
-        JCheckBox showError = new JCheckBox("Show Error");
-        stamp.add(showError);
-        stamp.getContentPane().add(Graph.createGraph());
-
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
-        stamp.setSize(1280, 720);
+        stamp.setSize(1920, 1080);
         stamp.pack();
         stamp.setVisible(true);
-        stamp.setExtendedState(stamp.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        Logger.log("Window Created", Severity.NORMAL);
         stamp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

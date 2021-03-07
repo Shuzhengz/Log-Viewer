@@ -29,7 +29,7 @@ public class Processor {
     
     // From the organized data from receive(), create a collection of 2d time vs data arrays with keys being the headers
     public static void processData() {
-        Map<String, String[][]> map = new HashMap<String, String[][]>();
+        Map<String, String[][]> map = new HashMap<>();
         for (int i = 1; i < mHeaders.size(); i++) {
             String[][] data = new String[mOrganizedData.get(i).size()][2];
             for(int j = 0; j < mOrganizedData.get(i).size()-1; j++){

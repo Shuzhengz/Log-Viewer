@@ -52,10 +52,12 @@ public class Dataset extends Graph{
         int totalRows = kOrganizedData.size();
         List<List<String>> organizedData = kOrganizedData;
         organizedData.remove(0);
+        double [][] coords = new double[0][];
+                
         for (int currentRowNum = rowCount; currentRowNum < totalRows; currentRowNum++) {
-            double [][] coords = new double [][] {timestamp, getDataFromList(cleanOrganizedData(organizedData.get(0)))};
+            coords = new double [][] {timestamp, getDataFromList(cleanOrganizedData(organizedData.get(currentRowNum)))};
         }
-        return null;
+        return coords;
     }
 
     private static boolean getIfHeaderComplete(int headerCount, int columnCount) {

@@ -26,8 +26,9 @@ public class Graph extends ApplicationFrame {
         setContentPane(panel);
     }
 
-    public static ChartPanel createGraph(MainRenderer.Button lastButtonPressed){
-        XYDataset ds = Dataset.createDataset();
+    public static ChartPanel createGraph(MainRenderer.Button buttonPressed){
+
+        XYDataset ds = createSpecificDataset(MainRenderer.lastButtonPressed);
 
         try {
             JFreeChart chart = ChartFactory.createXYLineChart("LogViewer",
@@ -39,5 +40,21 @@ public class Graph extends ApplicationFrame {
             Logger.log("Error creating graph", Severity.ERROR);
             return null;
         }
+    }
+
+    private static XYDataset createSpecificDataset(MainRenderer.Button buttonPressed){
+        switch (buttonPressed) {
+            case NONE:
+                break;
+            case ALL:
+                return Dataset.createDataset();
+            case DISTANCE:
+                return Dataset.createDataset();
+            case OTHERS:
+                return Dataset.createDataset();
+            default:
+                Logger.log("Fell through on button states!", Severity.WARNING);
+        }
+        return null;
     }
 }

@@ -7,6 +7,10 @@ import java.util.Map;
 
 public class Processor {
 
+    Processor() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static List<List<String>> mOrganizedData;
     private static final List<String> mHeaders = new ArrayList<>();
 
@@ -56,9 +60,9 @@ public class Processor {
 
     public static double getData(double timestamp, double[][] timevsdata){
         double selectedValue = 0;
-        for (double[] timevsdatum : timevsdata) {
-            if (timestamp == timevsdatum[0]) {
-                selectedValue = timevsdatum[1];
+        for (double[] timeVsDatum : timevsdata) {
+            if (timestamp == timeVsDatum[0]) {
+                selectedValue = timeVsDatum[1];
                 break;
             }
         }

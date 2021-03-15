@@ -21,7 +21,7 @@ public class Dataset extends Graph{
     }
 
     // Creating the dataset
-    public static XYDataset createDataset() {
+    public static XYDataset createDataset(MainRenderer.Button buttonPressed) {
         int kHeaderCount = getHeaderCount(kHeaders);
         boolean headerComplete = getIfHeaderComplete(kHeaderCount, getColumnCount(kOrganizedData));
 
@@ -32,6 +32,7 @@ public class Dataset extends Graph{
                 dataset.addSeries(kHeaders.get(headerNum), new double[][]
                         {timestamp, getDataFromList(cleanOrganizedData(kOrganizedData.get(headerNum)))});
             }
+            Logger.log("Dataset creation successful", Severity.NORMAL);
             return dataset;
         } else if (!headerComplete) {
             for (int headerNum = 1; headerNum < kHeaderCount; headerNum++) {
@@ -94,5 +95,18 @@ public class Dataset extends Graph{
     // Convert List<String> to double[]
     private static double[] getDataFromList(List<String> listInput){
         return listInput.stream().mapToDouble(d -> Double.parseDouble(d)).toArray();
+    }
+
+    private static XYDataset createSpecificDataset(MainRenderer.Button buttonPressed){
+        switch (buttonPressed) {
+            case NONE:
+                break;
+            case ALL:
+            case DISTANCE:
+            case OTHERS:
+            default:
+                Logger.log("Fell through on button states!", Severity.WARNING);
+        }
+        return null;
     }
 }

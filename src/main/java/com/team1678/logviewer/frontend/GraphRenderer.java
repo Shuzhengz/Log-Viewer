@@ -24,7 +24,7 @@ public class GraphRenderer extends JFrame {
         frame.add(panel);
 
         Processor.receive(Input.read(Transfer.returnFilePath()));
-        frame.getContentPane().add(Graph.createGraph());
+        frame.getContentPane().add(Graph.createGraph(MainRenderer.lastButtonPressed));
 
         frame.setSize(1920, 1080);
         frame.pack();

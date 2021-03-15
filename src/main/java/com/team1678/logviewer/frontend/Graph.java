@@ -26,7 +26,7 @@ public class Graph extends ApplicationFrame {
         setContentPane(panel);
     }
 
-    public static ChartPanel createGraph(){
+    public static ChartPanel createGraph(MainRenderer.Button lastButtonPressed){
         XYDataset ds = Dataset.createDataset();
 
         try {

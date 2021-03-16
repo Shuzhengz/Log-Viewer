@@ -17,7 +17,7 @@ public class MainRenderer extends JFrame {
     static String csvData;
     static boolean fileSelected;
 
-    public static Button lastButtonPressed = Button.NONE;
+    private static Button lastButtonPressed = Button.NONE;
 
     public enum Button {
         NONE, ALL, DISTANCE, OTHERS

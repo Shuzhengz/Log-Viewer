@@ -18,7 +18,7 @@ public class Graph extends ApplicationFrame {
 
         JFreeChart chart = ChartFactory.createLineChart(
                 "title", "category", "value",
-                (CategoryDataset) Dataset.createDataset(MainRenderer.lastButtonPressed),
+                (CategoryDataset) Dataset.createDataset(MainRenderer.returnLastButtonPressed()),
                 PlotOrientation.VERTICAL, true, true, false);
 
         ChartPanel panel = new ChartPanel(chart);

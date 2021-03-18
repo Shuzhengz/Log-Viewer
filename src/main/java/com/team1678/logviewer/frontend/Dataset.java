@@ -105,7 +105,7 @@ public class Dataset extends Graph{
             case DISTANCE:
             case OTHERS:
             default:
-                Logger.log("Fell through on button states!", Severity.WARNING);
+                Logger.log("Fell through on button states", Severity.WARNING);
         }
         return null;
     }

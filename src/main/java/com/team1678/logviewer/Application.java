@@ -1,19 +1,15 @@
 package com.team1678.logviewer;
 
-import com.team1678.logviewer.frontend.GraphRenderer;
 import com.team1678.logviewer.frontend.MainRenderer;
 import com.team1678.logviewer.io.Logger;
 import com.team1678.logviewer.io.Severity;
 
 import javax.swing.*;
 import java.io.FileNotFoundException;
-import java.util.Map;
 
 public final class Application {
 
     public volatile boolean fileSelected;
-
-    private MainRenderer window = new MainRenderer();
 
     private Application() throws FileNotFoundException {
     }

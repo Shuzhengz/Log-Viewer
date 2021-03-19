@@ -12,12 +12,16 @@ import com.team1678.logviewer.io.Severity;
 public class MainRenderer extends JFrame {
 
     public static JFrame stamp;
-
     public static final String TITLE = "Graph";
 
     static String csvData;
     static boolean fileSelected;
-    static String lastButtonPressed;
+
+    private static Button lastButtonPressed = Button.NONE;
+
+    public enum Button {
+        NONE, ALL, DISTANCE, OTHERS
+    }
 
     public static String returnDataPath() {
         // return the csvData variable to the main app
@@ -29,7 +33,7 @@ public class MainRenderer extends JFrame {
         return fileSelected;
     }
 
-    public static String returnLastButtonPressed(){
+    public static synchronized Button returnLastButtonPressed(){
         return lastButtonPressed;
     }
 
@@ -48,6 +52,7 @@ public class MainRenderer extends JFrame {
 
         fileSelector.addActionListener(e -> {
             //Code ran when the button is clicked
+            lastButtonPressed = Button.ALL;
             JFileChooser fc = new JFileChooser();
             JFileChooser chooser = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -55,7 +60,6 @@ public class MainRenderer extends JFrame {
             chooser.setFileFilter(filter);
             int returnVal = chooser.showOpenDialog(fc);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String path = chooser.getSelectedFile().getAbsolutePath();
                 try {
                     //  Block of code to try
                     csvData = chooser.getSelectedFile().getAbsolutePath();
@@ -88,21 +92,18 @@ public class MainRenderer extends JFrame {
         });
 
         stamp.add(panel);
-        JButton distanceVelocity = new JButton("Distance & Velocity");
-        stamp.add(distanceVelocity);
-        distanceVelocity.addActionListener(e -> lastButtonPressed = "Distance & Velocity");
 
-        JButton electrical = new JButton("Electrical");
-        stamp.add(electrical);
-        electrical.addActionListener(e -> lastButtonPressed = "Electrical");
+        JButton all = new JButton("All");
+        stamp.add(all);
+        all.addActionListener(e -> lastButtonPressed = Button.ALL);
 
-        JButton heading = new JButton("Heading");
-        stamp.add(heading);
-        heading.addActionListener(e -> lastButtonPressed = "Heading");
+        JButton distance = new JButton("Distance");
+        stamp.add(distance);
+        distance.addActionListener(e -> lastButtonPressed = Button.DISTANCE);
 
         JButton others = new JButton("Others");
         stamp.add(others);
-        others.addActionListener(e -> lastButtonPressed = "Others");
+        others.addActionListener(e -> lastButtonPressed = Button.OTHERS);
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1920, 1080);

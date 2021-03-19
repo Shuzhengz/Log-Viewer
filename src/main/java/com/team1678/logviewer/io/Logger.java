@@ -32,23 +32,6 @@ public class Logger {
 
         System.out.print(error);
 
-        // Write to file
-        FileWriter write = null;
-        if (logCreated) {
-            try {
-                write = new FileWriter(logs, true);
-            } catch (IOException | SecurityException e) {
-                showDialog("Error writing errors to log. Fatal. Possible cause: insufficient permissions.");
-                System.exit(-1);
-            }
-            try {
-                write.write(error);
-                write.close();
-            } catch (IOException e) {
-                showDialog("Error writing errors. Nonfatal.");
-            }
-        }
-
         // Show fatal error
         if (severity == Severity.FATAL) {
             showDialog("FATAL " + message);

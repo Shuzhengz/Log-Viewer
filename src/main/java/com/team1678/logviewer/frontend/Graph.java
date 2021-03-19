@@ -16,18 +16,18 @@ public class Graph extends ApplicationFrame {
     public Graph(String title) {
         super(title);
 
-        XYDataset dataset = Dataset.createDataset();
-
         JFreeChart chart = ChartFactory.createLineChart(
-                "title", "category", "value", (CategoryDataset) Dataset.createDataset(),
+                "title", "category", "value",
+                (CategoryDataset) Dataset.createDataset(MainRenderer.returnLastButtonPressed()),
                 PlotOrientation.VERTICAL, true, true, false);
 
         ChartPanel panel = new ChartPanel(chart);
         setContentPane(panel);
     }
 
-    public static ChartPanel createGraph(){
-        XYDataset ds = Dataset.createDataset();
+    public static ChartPanel createGraph(MainRenderer.Button buttonPressed){
+
+        XYDataset ds = Dataset.createDataset(buttonPressed);
 
         try {
             JFreeChart chart = ChartFactory.createXYLineChart("LogViewer",

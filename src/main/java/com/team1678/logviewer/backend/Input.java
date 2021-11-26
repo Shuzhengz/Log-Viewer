@@ -15,7 +15,7 @@ public class Input {
         throw new IllegalStateException("Utility class");
     }
 
-    public static List<List<String>> read(String path){
+    public static List<List<String>> read(String path) {
         Logger.log("Reading...", Severity.NORMAL);
         List<List<String>> records = new ArrayList<>();
         try (CSVReader csvReader = new CSVReader(new FileReader(path))) {

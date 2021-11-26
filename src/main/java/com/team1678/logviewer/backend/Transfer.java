@@ -8,18 +8,18 @@ import java.util.*;
 
 public class Transfer {
 
-    private Transfer(){
+    private Transfer() {
         throw new IllegalStateException("Utility Class");
     }
 
-    public static Map<String, String[][]>TransferToFrontend(){
+    public static Map<String, String[][]> TransferToFrontend() {
         try {
             Processor processorVal = new Processor();
             Processor.processData();
             Map<String, String[][]> returnVal = Processor.getProcessedData();
             Logger.log("Data transferred", Severity.NORMAL);
             return returnVal;
-        } catch (Exception e){
+        } catch (Exception e) {
             Logger.log("Error transferring", Severity.ERROR);
             return null;
         }

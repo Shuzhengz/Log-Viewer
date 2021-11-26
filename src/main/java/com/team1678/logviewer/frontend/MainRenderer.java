@@ -33,7 +33,7 @@ public class MainRenderer extends JFrame {
         return fileSelected;
     }
 
-    public static synchronized Button returnLastButtonPressed(){
+    public static synchronized Button returnLastButtonPressed() {
         return lastButtonPressed;
     }
 
@@ -85,7 +85,7 @@ public class MainRenderer extends JFrame {
                 try {
                     GraphRenderer.render(TITLE);
                     Logger.log("Graph window created", Severity.NORMAL);
-                } catch (Exception ee ){
+                } catch (Exception ee) {
                     Logger.log("Error creating graph window", Severity.ERROR);
                 }
             });

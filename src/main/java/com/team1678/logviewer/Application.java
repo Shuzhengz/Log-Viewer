@@ -40,7 +40,7 @@ public final class Application {
             try {
                 MainRenderer.render();
                 Logger.log("Window Created", Severity.NORMAL);
-            } catch (Exception e ){
+            } catch (Exception e) {
                 Logger.log("Error creating window", Severity.FATAL);
             }
         });

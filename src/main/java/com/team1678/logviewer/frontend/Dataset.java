@@ -9,12 +9,12 @@ import org.jfree.data.xy.XYDataset;
 
 import java.util.List;
 
-public class Dataset extends Graph{
+public class Dataset extends Graph {
 
     private static final List<String> kHeaders = Processor.getHeaders();
-    private static final List<List<String>>kOrganizedData = Processor.getOrganizedData();
+    private static final List<List<String>> kOrganizedData = Processor.getOrganizedData();
 
-    private static final double [] timestamp = getDataFromList(cleanOrganizedData(kOrganizedData.get(0)));
+    private static final double[] timestamp = getDataFromList(cleanOrganizedData(kOrganizedData.get(0)));
 
     public Dataset(String title) {
         super(title);
@@ -49,14 +49,14 @@ public class Dataset extends Graph{
         return null;
     }
 
-    private static double [][] createCoords (int rowCount, int headerCount) {
+    private static double[][] createCoords(int rowCount, int headerCount) {
         int totalRows = kOrganizedData.size();
         List<List<String>> organizedData = kOrganizedData;
         organizedData.remove(0);
-        double [][] coords = new double[0][];
-                
+        double[][] coords = new double[0][];
+
         for (int currentRowNum = rowCount; currentRowNum < totalRows; currentRowNum++) {
-            coords = new double [][] {timestamp, getDataFromList(cleanOrganizedData(organizedData.get(currentRowNum)))};
+            coords = new double[][]{timestamp, getDataFromList(cleanOrganizedData(organizedData.get(currentRowNum)))};
         }
         return coords;
     }
@@ -87,17 +87,17 @@ public class Dataset extends Graph{
     }
 
     // Get rid of the headers in organizedData
-    private static List<String> cleanOrganizedData(List<String> singleOrganizedData){
+    private static List<String> cleanOrganizedData(List<String> singleOrganizedData) {
         singleOrganizedData.remove(0);
         return singleOrganizedData;
     }
 
     // Convert List<String> to double[]
-    private static double[] getDataFromList(List<String> listInput){
+    private static double[] getDataFromList(List<String> listInput) {
         return listInput.stream().mapToDouble(d -> Double.parseDouble(d)).toArray();
     }
 
-    private static XYDataset createSpecificDataset(MainRenderer.Button buttonPressed){
+    private static XYDataset createSpecificDataset(MainRenderer.Button buttonPressed) {
         switch (buttonPressed) {
             case NONE:
                 break;

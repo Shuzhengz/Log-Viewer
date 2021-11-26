@@ -28,7 +28,7 @@ public class Logger {
         }
 
         // Error format
-        String error = "[ " + LocalDateTime.now().toString() + " ] [ " + severity.name() + " ] " + message + "\n";
+        String error = "[ " + LocalDateTime.now() + " ] [ " + severity.name() + " ] " + message + "\n";
 
         System.out.print(error);
 

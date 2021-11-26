@@ -14,7 +14,7 @@ public class Dataset extends Graph{
     private static final List<String> kHeaders = Processor.getHeaders();
     private static final List<List<String>>kOrganizedData = Processor.getOrganizedData();
 
-    private static double [] timestamp = getDataFromList(cleanOrganizedData(kOrganizedData.get(0)));
+    private static final double [] timestamp = getDataFromList(cleanOrganizedData(kOrganizedData.get(0)));
 
     public Dataset(String title) {
         super(title);

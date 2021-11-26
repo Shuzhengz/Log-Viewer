@@ -1,2 +1,2 @@
 # LogViewer
-Robot log viewer, FRC team 1678
+A simple log viewer to view CSV logs as a graph

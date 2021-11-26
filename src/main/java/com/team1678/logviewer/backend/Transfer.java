@@ -16,7 +16,7 @@ public class Transfer {
         try {
             Processor processorVal = new Processor();
             Processor.processData();
-            Map<String, String[][]> returnVal = processorVal.getProcessedData();
+            Map<String, String[][]> returnVal = Processor.getProcessedData();
             Logger.log("Data transferred", Severity.NORMAL);
             return returnVal;
         } catch (Exception e){

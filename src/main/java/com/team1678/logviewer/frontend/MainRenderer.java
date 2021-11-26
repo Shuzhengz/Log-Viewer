@@ -93,17 +93,17 @@ public class MainRenderer extends JFrame {
 
         stamp.add(panel);
 
-        JButton all = new JButton("All");
-        stamp.add(all);
-        all.addActionListener(e -> lastButtonPressed = Button.ALL);
+        //JButton all = new JButton("All");
+        //stamp.add(all);
+        //all.addActionListener(e -> lastButtonPressed = Button.ALL);
 
-        JButton distance = new JButton("Distance");
-        stamp.add(distance);
-        distance.addActionListener(e -> lastButtonPressed = Button.DISTANCE);
+        //JButton distance = new JButton("Distance");
+        //stamp.add(distance);
+        //distance.addActionListener(e -> lastButtonPressed = Button.DISTANCE);
 
-        JButton others = new JButton("Others");
-        stamp.add(others);
-        others.addActionListener(e -> lastButtonPressed = Button.OTHERS);
+        //JButton others = new JButton("Others");
+        //stamp.add(others);
+        //others.addActionListener(e -> lastButtonPressed = Button.OTHERS);
 
         stamp.setIconImage(new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR));
         stamp.setSize(1920, 1080);
